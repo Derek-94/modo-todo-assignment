@@ -5,26 +5,27 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ["prettier", "@typescript-eslint"],
+  plugins: ['prettier', '@typescript-eslint'],
   rules: {
-    "prettier/prettier": [
-      "error",
+    'prettier/prettier': [
+      'error',
       {
         singleQuote: true,
+        endOfLine: 'auto',
         semi: true,
         useTabs: false,
         tabWidth: 2,
         printWidth: 80,
         bracketSpacing: true,
-        arrowParens: "avoid",
+        arrowParens: 'avoid',
       },
     ],
   },
   parserOptions: {
-    parser: "@typescript-eslint/parser",
+    parser: '@typescript-eslint/parser',
   },
 };
