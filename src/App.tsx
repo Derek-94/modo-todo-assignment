@@ -1,12 +1,10 @@
 import React from 'react';
-import Todo from 'components/Todo/Todo';
-import { TODOS } from 'constant';
+import TodoList from 'components/Todo/TodoList';
+
 const App: React.FC = () => {
   return (
     <div className="App">
-      {TODOS.map(todo => (
-        <Todo todo={todo} />
-      ))}
+      <TodoList />
     </div>
   );
 };
