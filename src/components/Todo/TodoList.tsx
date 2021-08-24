@@ -20,4 +20,7 @@ export default TodoList;
 
 const MainContainer = styled.main`
   display: flex;
+  justify-content: space-between;
+  padding: 90px 20px 20px;
+  background-color: ${({ theme }) => theme.color.green};
 `;
