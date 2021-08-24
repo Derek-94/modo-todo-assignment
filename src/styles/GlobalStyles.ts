@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
-const GlobalStyles = createGlobalStyle` 
+const GlobalStyles = createGlobalStyle<{ theme: any }>` 
   ${reset}
 
   * {
@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
+    background-color: ${({ theme }) => theme.color.green};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 

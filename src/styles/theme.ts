@@ -12,6 +12,7 @@ export const theme = {
     radius: '5px',
     padding: '20px',
     listPadding: '30px 20px',
+    badgePadding: '5px 10px',
     dropShadow: 'rgba(0, 0, 0, 0.08) 0 4px 2px -2px',
     gap: '20px',
     titleSize: '30px',

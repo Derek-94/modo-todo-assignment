@@ -26,6 +26,7 @@ const ColumnContatiner = styled.div`
   box-sizing: border-box;
   min-width: 300px;
   width: 30%;
+  margin-top: 120px;
   padding: ${({ theme }) => theme.layout.padding};
   color: ${({ theme }) => theme.color.todoFont};
   border-radius: ${({ theme }) => theme.layout.radius};
