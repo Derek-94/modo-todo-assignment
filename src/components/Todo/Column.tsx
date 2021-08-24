@@ -3,12 +3,12 @@ import { Itodo, StatusKey } from 'types';
 import Todo from './Todo';
 import styled from 'styled-components';
 
-interface Props {
+interface ColumnProps {
   status: StatusKey;
   todos: Itodo[];
 }
 
-const Column: React.FC<Props> = ({ status, todos }) => {
+const Column: React.FC<ColumnProps> = ({ status, todos }) => {
   return (
     <ColumnContatiner>
       {status}
