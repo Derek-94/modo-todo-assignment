@@ -1,4 +1,4 @@
-## Online Test Pull Request
+## Modu-todo-assignment Pull Request
 
 ## 규칙
 * 리뷰어 두분의 approve가 필요합니다.
