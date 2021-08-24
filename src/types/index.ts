@@ -1,5 +1,6 @@
 export interface Itodo {
   id: number;
   taskName: string;
-  isComplete: boolean;
+  status: StatusKey;
 }
+export type StatusKey = 'Todo' | 'InProgress' | 'Done';
