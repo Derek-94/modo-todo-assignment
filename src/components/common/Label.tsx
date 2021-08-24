@@ -30,7 +30,7 @@ const Label: React.FC<priorityProps> = ({ children, ...props }) => {
 };
 
 const LabelWrap = styled.button<priorityProps>`
-  padding: ${({ theme }) => theme.layout.badgePadding};
+  padding: ${({ theme }) => theme.layout.labelPadding};
   border-radius: ${({ theme }) => theme.layout.radius};
   ${props => setSize(props)}
 `;
