@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TODOS, STATUS } from 'constant';
 import { StatusKey } from 'types';
 import Column from './Column';
 import styled from 'styled-components';
 
 const TodoList: React.FC = () => {
+  const [todoState, setTodoState] = useState(TODOS);
   const filterList = (status: StatusKey) =>
-    TODOS.filter(todo => todo.status === status);
+    todoState.filter(todo => todo.status === status);
   return (
     <MainContainer>
       {STATUS.map((status, i) => (
