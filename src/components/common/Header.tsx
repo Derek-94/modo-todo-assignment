@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header: React.FC = () => {
-  const currentDate = '2021.08.24';
+  const currentDate = new Date();
+  const date = new Intl.DateTimeFormat('KO-KR', {
+    dateStyle: 'long',
+  }).format(currentDate);
 
-  return <HeaderContainer>{currentDate}'s Todo List</HeaderContainer>;
+  return <HeaderContainer>{date}'s Todo List</HeaderContainer>;
 };
 
 const HeaderContainer = styled.div`
