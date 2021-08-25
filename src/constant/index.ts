@@ -1,4 +1,4 @@
-import { Itodo, StatusKey } from 'types';
+import { Itodo, StatusKey, MenuObj } from 'types';
 
 export const TODOS: Itodo[] = [
   {
@@ -8,7 +8,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-24',
   },
   {
     id: '2',
@@ -17,7 +17,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-25',
   },
   {
     id: '3',
@@ -26,7 +26,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-26',
   },
   {
     id: '4',
@@ -35,7 +35,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-27',
   },
   {
     id: '5',
@@ -44,7 +44,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-28',
   },
   {
     id: '6',
@@ -53,7 +53,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-29',
   },
   {
     id: '7',
@@ -62,7 +62,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-30',
   },
   {
     id: '8',
@@ -71,7 +71,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-01',
   },
   {
     id: '9',
@@ -80,7 +80,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-02',
   },
   {
     id: '10',
@@ -89,7 +89,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-03',
   },
   {
     id: '11',
@@ -98,7 +98,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-04',
   },
   {
     id: '12',
@@ -107,7 +107,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-05',
   },
   {
     id: '13',
@@ -116,7 +116,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-06',
   },
   {
     id: '14',
@@ -125,7 +125,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-07',
   },
   {
     id: '15',
@@ -134,7 +134,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-08',
   },
   {
     id: '16',
@@ -143,7 +143,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-09',
   },
   {
     id: '17',
@@ -152,7 +152,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-10',
   },
   {
     id: '18',
@@ -161,7 +161,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-11',
   },
   {
     id: '19',
@@ -170,7 +170,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-12',
   },
   {
     id: '20',
@@ -179,7 +179,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: '21',
@@ -188,7 +188,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: '22',
@@ -197,7 +197,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: '23',
@@ -206,7 +206,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: '24',
@@ -215,7 +215,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-14',
   },
   {
     id: '25',
@@ -224,7 +224,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-14',
   },
   {
     id: '26',
@@ -233,7 +233,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: '27',
@@ -242,7 +242,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: '28',
@@ -251,7 +251,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: '29',
@@ -260,7 +260,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: '30',
@@ -269,8 +269,13 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-16',
   },
 ];
 
 export const STATUS: StatusKey[] = ['Todo', 'InProgress', 'Done'];
+
+export const MENU: MenuObj = Object.freeze({
+  PRIORITY: ['low', 'medium', 'high'],
+  FILTER: ['Init', 'Deadline', 'Priority'],
+});

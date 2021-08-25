@@ -5,11 +5,24 @@ import Column from './Column';
 import styled from 'styled-components';
 import DragProvider from 'contexts/DragContext';
 
+import { useFiltering } from 'components/Filtering/FilteringService';
+import FilteringContainer from 'components/Filtering/FilteringContainer';
+
 const TodoList: React.FC = () => {
-  const [todoState, setTodoState] = useState(TODOS);
+  const { handlerFiltering, handlerDropdown, dropdownOpen, todoState, click } =
+    useFiltering();
+
   const filterList = (status: StatusKey) =>
     todoState.filter(todo => todo.status === status);
+
   return (
+    <>
+      <FilteringContainer
+        handlerFiltering={handlerFiltering}
+        handlerDropdown={handlerDropdown}
+        dropdownOpen={dropdownOpen}
+        click={click}
+      />
     <MainContainer>
       <DragProvider>
         {STATUS.map((status, i) => (
@@ -23,6 +36,7 @@ const TodoList: React.FC = () => {
         ))}
       </DragProvider>
     </MainContainer>
+  </>
   );
 };
 const MainContainer = styled.main`
