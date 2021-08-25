@@ -19,11 +19,10 @@ const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
   };
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.stopPropagation();
-    const { parentElement } = e.currentTarget;
     const dragId = e.dataTransfer.getData('id');
     const targetId = todo.id;
 
-    const newStatus = parentElement?.dataset.status || '';
+    const newStatus = todo.status;
     const from = findById(todos, dragId);
     const to = findById(todos, targetId) + (isOverHalf(e) ? 0 : -1);
     const newTodo: Itodo = {
@@ -54,7 +53,7 @@ const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
   };
 
   return (
-    <TodoWrapper
+    <TodoContainer
       ref={todoRef}
       draggable
       data-id={todo.id}
@@ -68,7 +67,7 @@ const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
       <TodoContent>
         {todo.taskName} | {todo.id}
       </TodoContent>
-    </TodoWrapper>
+    </TodoContainer>
   );
 };
 
@@ -95,9 +94,12 @@ const marginByPosition = (props: StyledTodoProps) => {
   `;
 };
 
-const TodoWrapper = styled.div<StyledTodoProps>`
-  padding: 16px;
-  box-sizing: border-box;
+const TodoContainer = styled.div<StyledTodoProps>`
+  box-shadow: ${({ theme }) => theme.layout.dropShadow};
+  color: ${({ theme }) => theme.color.todoFont};
+  border-radius: ${({ theme }) => theme.layout.radius};
+  padding: ${({ theme }) => theme.layout.listPadding};
+  background-color: ${({ theme }) => theme.color.whiteBackground};
   transition: 0.5s padding ease;
   ${props => marginByPosition(props)}
 `;

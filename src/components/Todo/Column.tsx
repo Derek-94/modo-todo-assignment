@@ -36,7 +36,7 @@ const Column: React.FC<ColumnProps> = ({
   };
   return (
     <ColumnContatiner>
-      {status}
+      <h2>{status}</h2>
       <Todos
         onDragOver={handlerDragOver}
         onDrop={moveLast}
@@ -55,14 +55,26 @@ const Column: React.FC<ColumnProps> = ({
   );
 };
 
+const ColumnContatiner = styled.div`
+  box-sizing: border-box;
+  min-width: 300px;
+  width: 30%;
+  margin-top: 120px;
+  padding: ${({ theme }) => theme.layout.padding};
+  color: ${({ theme }) => theme.color.todoFont};
+  border-radius: ${({ theme }) => theme.layout.radius};
+  background-color: ${({ theme }) => theme.color.columnBackground};
+
+  > h2 {
+    font-size: ${({ theme }) => theme.layout.subTitleSize};
+    font-weight: ${({ theme }) => theme.layout.fontBold};
+    padding-left: ${({ theme }) => theme.layout.padding};
+  }
+`;
+
 const Todos = styled.div`
   height: 100%;
-`;
-const ColumnContatiner = styled.div`
-  border: 1px solid black;
-  min-width: 300px;
-  min-height: 600px;
-  padding: 20px;
+  margin-top: ${({ theme }) => theme.layout.gap};
 `;
 
 export default Column;

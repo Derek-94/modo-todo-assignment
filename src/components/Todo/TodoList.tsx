@@ -27,6 +27,8 @@ const TodoList: React.FC = () => {
 };
 const MainContainer = styled.main`
   display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
 `;
 
 export default TodoList;
