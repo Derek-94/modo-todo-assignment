@@ -5,15 +5,15 @@ import { ClickObj } from 'types';
 
 interface FilteringBodyProps {
   handlerFiltering: (target: string) => void;
-  handlerDrop: () => void;
-  open: boolean;
+  handlerDropdown: () => void;
+  dropdownOpen: boolean;
   click: ClickObj;
 }
 
 const FilteringBody: React.FC<FilteringBodyProps> = ({
   handlerFiltering,
-  handlerDrop,
-  open,
+  handlerDropdown,
+  dropdownOpen,
   click,
 }) => {
   return (
@@ -30,10 +30,10 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
       >
         {MENU.FILTER[1]}
       </DeadlineBtn>
-      <PriorityBtn onClick={handlerDrop} priorityCheck={click.priority}>
+      <PriorityBtn onClick={handlerDropdown} priorityCheck={click.priority}>
         {click.priorityTarget || MENU.FILTER[2]}
       </PriorityBtn>
-      <DropMenu checkSelect={open}>
+      <DropMenu checkDropdown={dropdownOpen}>
         {MENU.PRIORITY.map((priority, idx) => (
           <span onClick={() => handlerFiltering(priority)} key={idx}>
             {priority}
@@ -67,8 +67,8 @@ const DeadlineBtn = styled.button<{ deadlineCheck: boolean }>`
   background-color: ${props => (props.deadlineCheck ? '#dd346c' : '#fafafa')};
 `;
 
-const DropMenu = styled.div<{ checkSelect: boolean }>`
-  display: ${props => (props.checkSelect ? 'flex' : 'none')};
+const DropMenu = styled.div<{ checkDropdown: boolean }>`
+  display: ${props => (props.checkDropdown ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: space-evenly;
   position: absolute;

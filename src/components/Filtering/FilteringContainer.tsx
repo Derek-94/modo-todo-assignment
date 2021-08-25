@@ -7,15 +7,15 @@ import FilteringBody from 'components/Filtering/template/body/FilteringBody';
 
 interface FilteringContainerProps {
   handlerFiltering: (target: string) => void;
-  handlerDrop: () => void;
-  open: boolean;
+  handlerDropdown: () => void;
+  dropdownOpen: boolean;
   click: ClickObj;
 }
 
 const FilteringContainer: React.FC<FilteringContainerProps> = ({
   handlerFiltering,
-  handlerDrop,
-  open,
+  handlerDropdown,
+  dropdownOpen,
   click,
 }) => {
   return (
@@ -23,8 +23,8 @@ const FilteringContainer: React.FC<FilteringContainerProps> = ({
       <FilteringHead />
       <FilteringBody
         handlerFiltering={handlerFiltering}
-        handlerDrop={handlerDrop}
-        open={open}
+        handlerDropdown={handlerDropdown}
+        dropdownOpen={dropdownOpen}
         click={click}
       />
     </FilteringWrapper>

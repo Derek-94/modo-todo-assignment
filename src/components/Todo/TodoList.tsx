@@ -8,7 +8,7 @@ import { useFiltering } from 'components/Filtering/FilteringService';
 import FilteringContainer from 'components/Filtering/FilteringContainer';
 
 const TodoList: React.FC = () => {
-  const { handlerFiltering, handlerDrop, open, todoState, click } =
+  const { handlerFiltering, handlerDropdown, dropdownOpen, todoState, click } =
     useFiltering();
 
   const filterList = (status: StatusKey) =>
@@ -18,8 +18,8 @@ const TodoList: React.FC = () => {
     <>
       <FilteringContainer
         handlerFiltering={handlerFiltering}
-        handlerDrop={handlerDrop}
-        open={open}
+        handlerDropdown={handlerDropdown}
+        dropdownOpen={dropdownOpen}
         click={click}
       />
       <MainContainer>
