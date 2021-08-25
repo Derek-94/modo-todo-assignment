@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-interface priorityProps {
+interface StyledLabelProps {
   High?: boolean;
   Medium?: boolean;
   Low?: boolean;
 }
 
-const setSize = (props: priorityProps) => {
+const setSize = (props: StyledLabelProps) => {
   if (props.High) {
     return css`
       background-color: #ea2027;
@@ -25,11 +25,11 @@ const setSize = (props: priorityProps) => {
   `;
 };
 
-const Label: React.FC<priorityProps> = ({ children, ...props }) => {
+const Label: React.FC<StyledLabelProps> = ({ children, ...props }) => {
   return <LabelWrap {...props}>{children}</LabelWrap>;
 };
 
-const LabelWrap = styled.button<priorityProps>`
+const LabelWrap = styled.button<StyledLabelProps>`
   padding: ${({ theme }) => theme.layout.labelPadding};
   border-radius: ${({ theme }) => theme.layout.radius};
   ${props => setSize(props)}

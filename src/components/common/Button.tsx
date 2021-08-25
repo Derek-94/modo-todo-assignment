@@ -1,13 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-interface sizeProps {
+interface StyledButtonProps {
   Large?: boolean;
   Small?: boolean;
   select?: boolean;
 }
 
-const setSize = (props: sizeProps) => {
+const setSize = (props: StyledButtonProps) => {
   if (props.Large) {
     return css`
       padding: 16px 16px;
@@ -25,11 +25,11 @@ const setSize = (props: sizeProps) => {
   `;
 };
 
-const Button: React.FC<sizeProps> = ({ children, ...props }) => {
+const Button: React.FC<StyledButtonProps> = ({ children, ...props }) => {
   return <ButtonWrap {...props}>{children}</ButtonWrap>;
 };
 
-const ButtonWrap = styled.button<sizeProps>`
+const ButtonWrap = styled.button<StyledButtonProps>`
   background: ${props => (props.select ? '#A9A3A9' : 'white')};
   color: ${props => (props.select ? 'white' : '#A9A3A9')};
   border: 2px solid #a9a3a9;
