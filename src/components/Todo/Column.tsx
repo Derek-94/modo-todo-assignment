@@ -6,15 +6,16 @@ import styled from 'styled-components';
 interface ColumnProps {
   status: StatusKey;
   todos: Itodo[];
+  onDeleteTodo: (id: string) => void;
 }
 
-const Column: React.FC<ColumnProps> = ({ status, todos }) => {
+const Column: React.FC<ColumnProps> = ({ status, todos, onDeleteTodo }) => {
   return (
     <ColumnContatiner>
       {status}
       <Todos>
         {todos.map(todo => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} onDeleteTodo={onDeleteTodo} />
         ))}
       </Todos>
     </ColumnContatiner>
@@ -22,6 +23,7 @@ const Column: React.FC<ColumnProps> = ({ status, todos }) => {
 };
 
 export default Column;
+
 const Todos = styled.div`
   margin-top: 20px;
 `;

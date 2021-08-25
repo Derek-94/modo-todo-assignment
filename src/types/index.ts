@@ -1,5 +1,5 @@
 export interface Itodo {
-  id: number;
+  id: string;
   taskName: string;
   status: StatusKey;
   priority?: PriorityType;
@@ -8,5 +8,5 @@ export interface Itodo {
   dueDate?: string;
 }
 
-export type PriorityType = 'low' | 'medium' | 'high';
+export type PriorityType = '' | 'low' | 'medium' | 'high';
 export type StatusKey = 'Todo' | 'InProgress' | 'Done';
