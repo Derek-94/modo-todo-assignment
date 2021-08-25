@@ -4,16 +4,30 @@ import { StatusKey } from 'types';
 import Column from './Column';
 import styled from 'styled-components';
 
+import { useFiltering } from 'components/Filtering/FilteringService';
+import FilteringContainer from 'components/Filtering/FilteringContainer';
+
 const TodoList: React.FC = () => {
-  const [todoState, setTodoState] = useState(TODOS);
+  const { handlerFiltering, handlerDrop, open, todoState, click } =
+    useFiltering();
+
   const filterList = (status: StatusKey) =>
     todoState.filter(todo => todo.status === status);
+
   return (
-    <MainContainer>
-      {STATUS.map((status, i) => (
-        <Column key={i} status={status} todos={filterList(status)} />
-      ))}
-    </MainContainer>
+    <>
+      <FilteringContainer
+        handlerFiltering={handlerFiltering}
+        handlerDrop={handlerDrop}
+        open={open}
+        click={click}
+      />
+      <MainContainer>
+        {STATUS.map((status, i) => (
+          <Column key={i} status={status} todos={filterList(status)} />
+        ))}
+      </MainContainer>
+    </>
   );
 };
 export default TodoList;
