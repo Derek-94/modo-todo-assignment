@@ -12,7 +12,7 @@ interface ColumnProps {
 const Column: React.FC<ColumnProps> = ({ status, todos, onDeleteTodo }) => {
   return (
     <ColumnContatiner>
-      {status}
+      <h2>{status}</h2>
       <Todos>
         {todos.map(todo => (
           <Todo key={todo.id} todo={todo} onDeleteTodo={onDeleteTodo} />
@@ -23,12 +23,23 @@ const Column: React.FC<ColumnProps> = ({ status, todos, onDeleteTodo }) => {
 };
 
 export default Column;
+const ColumnContatiner = styled.div`
+  box-sizing: border-box;
+  min-width: 300px;
+  width: 30%;
+  margin-top: 120px;
+  padding: ${({ theme }) => theme.layout.padding};
+  color: ${({ theme }) => theme.color.todoFont};
+  border-radius: ${({ theme }) => theme.layout.radius};
+  background-color: ${({ theme }) => theme.color.columnBackground};
+
+  > h2 {
+    font-size: ${({ theme }) => theme.layout.subTitleSize};
+    font-weight: ${({ theme }) => theme.layout.fontBold};
+    padding-left: ${({ theme }) => theme.layout.padding};
+  }
+`;
 
 const Todos = styled.div`
-  margin-top: 20px;
-`;
-const ColumnContatiner = styled.div`
-  border: 1px solid black;
-  min-width: 300px;
-  padding: 20px;
+  margin-top: ${({ theme }) => theme.layout.gap};
 `;

@@ -23,11 +23,12 @@ const Todo: React.FC<TodoProps> = ({ todo, onDeleteTodo }) => {
 };
 
 const TodoContainer = styled.div`
-  border: 1px solid black;
-  border-radius: 3px;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
+  margin-bottom: ${({ theme }) => theme.layout.gap};
+  box-shadow: ${({ theme }) => theme.layout.dropShadow};
+  color: ${({ theme }) => theme.color.todoFont};
+  border-radius: ${({ theme }) => theme.layout.radius};
+  padding: ${({ theme }) => theme.layout.listPadding};
+  background-color: ${({ theme }) => theme.color.whiteBackground};
 `;
 
 const Icon = styled(FontAwesomeIcon)`
