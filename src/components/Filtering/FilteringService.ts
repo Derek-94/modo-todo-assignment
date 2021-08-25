@@ -5,11 +5,13 @@ import { getStorage, setStorage } from 'utils/storage';
 
 interface FilteringData {
   todoState: Itodo[];
-  handlerFiltering: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handlerFiltering: (target: string) => void;
   handlerDrop: () => void;
   open: boolean;
   click: ClickObj;
 }
+
+// handlerFiltering: (e: React.MouseEvent<HTMLButtonElement>) => void;
 
 const initialTodos: Itodo[] = [];
 
@@ -36,10 +38,8 @@ export const useFiltering = (): FilteringData => {
     setTodoState(todoState);
   }, [todoState]);
 
-  const handlerFiltering = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    const button = e.target as HTMLButtonElement;
-    const target = button.innerText;
-
+  // const handlerFiltering = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const handlerFiltering = (target: string): void => {
     if (target === MENU.FILTER[0]) handlerOriginState();
     if (target === MENU.FILTER[1]) handlerDeadlineState();
     if (target === MENU.PRIORITY[0]) {
@@ -56,41 +56,13 @@ export const useFiltering = (): FilteringData => {
     }
   };
 
-  const filteringPriority = (target: string): Itodo[] => {
-    const data = originalData;
-    const filtering = data.filter((todo: Itodo) => todo.priority === target);
-
-    return filtering;
-  };
-
-  const filteringDeadline = (): Itodo[] => {
-    const data = originalData;
-    const currentDay = new Date(new Date().setHours(0, 0, 0, 0));
-
-    // 60 * 60 * 24 * 1000 = 86400000 (1 day)
-    const filtering = data?.filter((todo: Itodo) => {
-      const dueDate = new Date(todo.dueDate || '').setHours(0, 0, 0, 0);
-      const deadLine = dueDate - currentDay.getTime();
-
-      return deadLine <= 172800000 && deadLine >= 0;
-    });
-
-    return filtering;
-  };
-
   const handlerPriorityState = (target: string) => {
     if (click.deadline) {
       const priorityArr = filteringPriority(target);
       const deadlineArr = filteringDeadline();
-      const intersectionArr = [];
-
-      for (let i = 0; i < priorityArr.length; i++) {
-        if (
-          JSON.stringify(deadlineArr).includes(JSON.stringify(priorityArr[i]))
-        ) {
-          intersectionArr.push(priorityArr[i]);
-        }
-      }
+      const intersectionArr = priorityArr.filter(arr =>
+        deadlineArr.includes(arr)
+      );
 
       setClick({
         ...click,
@@ -125,15 +97,9 @@ export const useFiltering = (): FilteringData => {
       } else {
         const priorityArr = filteringPriority(click.priorityTarget);
         const deadlineArr = filteringDeadline();
-        const intersectionArr = [];
-
-        for (let i = 0; i < priorityArr.length; i++) {
-          if (
-            JSON.stringify(deadlineArr).includes(JSON.stringify(priorityArr[i]))
-          ) {
-            intersectionArr.push(priorityArr[i]);
-          }
-        }
+        const intersectionArr = priorityArr.filter(arr =>
+          deadlineArr.includes(arr)
+        );
 
         setClick({ ...click, origin: false, deadline: true });
         setTodoState(intersectionArr);
@@ -159,6 +125,28 @@ export const useFiltering = (): FilteringData => {
 
   const handlerDrop = (): void => {
     setOpen(!open);
+  };
+
+  const filteringPriority = (target: string): Itodo[] => {
+    const data = originalData;
+    const filtering = data.filter((todo: Itodo) => todo.priority === target);
+
+    return filtering;
+  };
+
+  const filteringDeadline = (): Itodo[] => {
+    const data = originalData;
+    const currentDay = new Date(new Date().setHours(0, 0, 0, 0));
+
+    // 60 * 60 * 24 * 1000 = 86400000 (1 day)
+    const filtering = data?.filter((todo: Itodo) => {
+      const dueDate = new Date(todo.dueDate || '').setHours(0, 0, 0, 0);
+      const deadLine = dueDate - currentDay.getTime();
+
+      return deadLine <= 172800000 && deadLine >= 0;
+    });
+
+    return filtering;
   };
 
   return {

@@ -4,7 +4,7 @@ import { MENU } from 'constant';
 import { ClickObj } from 'types';
 
 interface FilteringBodyProps {
-  handlerFiltering: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handlerFiltering: (target: string) => void;
   handlerDrop: () => void;
   open: boolean;
   click: ClickObj;
@@ -18,10 +18,16 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
 }) => {
   return (
     <FilteringBodyBlock>
-      <OriginBtn onClick={handlerFiltering} originCheck={click.origin}>
+      <OriginBtn
+        onClick={() => handlerFiltering(MENU.FILTER[0])}
+        originCheck={click.origin}
+      >
         {MENU.FILTER[0]}
       </OriginBtn>
-      <DeadlineBtn onClick={handlerFiltering} deadlineCheck={click.deadline}>
+      <DeadlineBtn
+        onClick={() => handlerFiltering(MENU.FILTER[1])}
+        deadlineCheck={click.deadline}
+      >
         {MENU.FILTER[1]}
       </DeadlineBtn>
       <PriorityBtn onClick={handlerDrop} priorityCheck={click.priority}>
@@ -29,7 +35,7 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
       </PriorityBtn>
       <DropMenu checkSelect={open}>
         {MENU.PRIORITY.map((priority, idx) => (
-          <span onClick={handlerFiltering} key={idx}>
+          <span onClick={() => handlerFiltering(priority)} key={idx}>
             {priority}
           </span>
         ))}

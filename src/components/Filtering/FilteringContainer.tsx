@@ -6,7 +6,7 @@ import FilteringHead from 'components/Filtering/template/head/FilteringHead';
 import FilteringBody from 'components/Filtering/template/body/FilteringBody';
 
 interface FilteringContainerProps {
-  handlerFiltering: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handlerFiltering: (target: string) => void;
   handlerDrop: () => void;
   open: boolean;
   click: ClickObj;
@@ -34,7 +34,7 @@ const FilteringContainer: React.FC<FilteringContainerProps> = ({
 export default FilteringContainer;
 
 const FilteringWrapper = styled.div`
-  width: 50%;
+  top: 100px;
   min-height: 80px;
   position: relative;
   background: white;
