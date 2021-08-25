@@ -23,6 +23,8 @@ const Todo: React.FC<TodoProps> = ({ todo, onDeleteTodo }) => {
 };
 
 const TodoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.layout.gap};
   box-shadow: ${({ theme }) => theme.layout.dropShadow};
   color: ${({ theme }) => theme.color.todoFont};
