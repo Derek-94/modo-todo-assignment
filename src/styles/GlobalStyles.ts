@@ -27,10 +27,6 @@ const GlobalStyles = createGlobalStyle<{ theme: any }>`
   button {
     cursor: pointer;
   }
-  
-  ul, ol {
-    list-style: none;
-  }
 `;
 
 export default GlobalStyles;
