@@ -3,6 +3,7 @@ import { TODOS, STATUS } from 'constant';
 import { StatusKey } from 'types';
 import Column from './Column';
 import styled from 'styled-components';
+import DragProvider from 'contexts/DragContext';
 
 import { useFiltering } from 'components/Filtering/FilteringService';
 import FilteringContainer from 'components/Filtering/FilteringContainer';
@@ -22,18 +23,26 @@ const TodoList: React.FC = () => {
         dropdownOpen={dropdownOpen}
         click={click}
       />
-      <MainContainer>
+    <MainContainer>
+      <DragProvider>
         {STATUS.map((status, i) => (
-          <Column key={i} status={status} todos={filterList(status)} />
+          <Column
+            key={i}
+            status={status}
+            filtered={filterList(status)}
+            todos={todoState}
+            setTodoState={setTodoState}
+          />
         ))}
-      </MainContainer>
-    </>
+      </DragProvider>
+    </MainContainer>
+  </>
   );
 };
-export default TodoList;
-
 const MainContainer = styled.main`
   display: flex;
   justify-content: space-between;
   padding: 20px 20px;
 `;
+
+export default TodoList;
