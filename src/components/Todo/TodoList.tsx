@@ -5,6 +5,7 @@ import Column from './Column';
 import Button from '../common/Button';
 import uuidv4 from '../../utils/getUuid';
 import styled from 'styled-components';
+import DragProvider from 'contexts/DragContext';
 
 const TodoList: React.FC = () => {
   const [inputTodo, setInputTodo] = useState<string>('');
@@ -71,19 +72,22 @@ const TodoList: React.FC = () => {
         <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
       )}
       <MainContainer>
-        {STATUS.map((status, i) => (
-          <Column
-            key={i}
-            status={status}
-            todos={filterList(status)}
-            onDeleteTodo={onDeleteTodo}
-          />
-        ))}
+        <DragProvider>
+          {STATUS.map((status, i) => (
+            <Column
+              key={i}
+              status={status}
+              filtered={filterList(status)}
+              todos={todoState}
+              setTodoState={setTodoState}
+              onDeleteTodo={onDeleteTodo}
+            />
+          ))}
+        </DragProvider>
       </MainContainer>
     </>
   );
 };
-export default TodoList;
 
 const TodoForm = styled.form`
   display: flex;
@@ -121,3 +125,5 @@ const MainContainer = styled.main`
   justify-content: space-between;
   padding: 20px 20px;
 `;
+
+export default TodoList;
