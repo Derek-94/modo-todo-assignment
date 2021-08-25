@@ -3,6 +3,7 @@ import { TODOS, STATUS } from 'constant';
 import { StatusKey } from 'types';
 import Column from './Column';
 import styled from 'styled-components';
+import DragProvider from 'contexts/DragContext';
 
 const TodoList: React.FC = () => {
   const [todoState, setTodoState] = useState(TODOS);
@@ -10,16 +11,24 @@ const TodoList: React.FC = () => {
     todoState.filter(todo => todo.status === status);
   return (
     <MainContainer>
-      {STATUS.map((status, i) => (
-        <Column key={i} status={status} todos={filterList(status)} />
-      ))}
+      <DragProvider>
+        {STATUS.map((status, i) => (
+          <Column
+            key={i}
+            status={status}
+            filtered={filterList(status)}
+            todos={todoState}
+            setTodoState={setTodoState}
+          />
+        ))}
+      </DragProvider>
     </MainContainer>
   );
 };
-export default TodoList;
-
 const MainContainer = styled.main`
   display: flex;
   justify-content: space-between;
   padding: 20px 20px;
 `;
+
+export default TodoList;

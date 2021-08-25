@@ -1,5 +1,5 @@
 export interface Itodo {
-  id: number;
+  id: string;
   taskName: string;
   status: StatusKey;
   priority?: PriorityType;

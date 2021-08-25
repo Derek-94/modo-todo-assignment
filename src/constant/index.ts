@@ -2,7 +2,7 @@ import { Itodo, StatusKey } from 'types';
 
 export const TODOS: Itodo[] = [
   {
-    id: 1,
+    id: '1',
     taskName: '기본세팅',
     status: 'Done',
     priority: 'medium',
@@ -11,7 +11,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 2,
+    id: '2',
     taskName: '원티드프로젝트',
     status: 'InProgress',
     priority: 'high',
@@ -20,7 +20,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 3,
+    id: '3',
     taskName: '자소서 쓰기',
     status: 'Todo',
     priority: 'medium',
@@ -29,7 +29,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 4,
+    id: '4',
     taskName: '리드미 작성',
     status: 'Todo',
     priority: 'medium',
@@ -38,7 +38,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 5,
+    id: '5',
     taskName: '거리 두기',
     status: 'InProgress',
     priority: 'medium',
@@ -47,7 +47,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 6,
+    id: '6',
     taskName: '회의',
     status: 'Todo',
     priority: 'medium',
@@ -56,7 +56,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 7,
+    id: '7',
     taskName: '캐치마인드',
     status: 'InProgress',
     priority: 'medium',
@@ -65,7 +65,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 8,
+    id: '8',
     taskName: '백신 예약하기',
     status: 'Done',
     priority: 'high',
@@ -74,7 +74,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 9,
+    id: '9',
     taskName: '전입 신고',
     status: 'InProgress',
     priority: 'high',
@@ -83,7 +83,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 10,
+    id: '10',
     taskName: '기술 블로그 작성',
     status: 'InProgress',
     priority: 'medium',
@@ -92,7 +92,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 11,
+    id: '11',
     taskName: '집들이 선물사기',
     status: 'InProgress',
     priority: 'low',
@@ -101,7 +101,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 12,
+    id: '12',
     taskName: '에어컨 수리',
     status: 'Done',
     priority: 'medium',
@@ -110,7 +110,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 13,
+    id: '13',
     taskName: '여름 이불 빨래',
     status: 'Done',
     priority: 'medium',
@@ -119,7 +119,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 14,
+    id: '14',
     taskName: '세션 회고 작성',
     status: 'Todo',
     priority: 'medium',
@@ -128,7 +128,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 15,
+    id: '15',
     taskName: '주간 회고 작성',
     status: 'Done',
     priority: 'high',
@@ -137,7 +137,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 16,
+    id: '16',
     taskName: '맥북 구매',
     status: 'InProgress',
     priority: 'medium',
@@ -146,7 +146,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 17,
+    id: '17',
     taskName: '이력서 작성',
     status: 'Todo',
     priority: 'high',
@@ -155,7 +155,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 18,
+    id: '18',
     taskName: '물 2리터 마시기',
     status: 'InProgress',
     priority: 'low',
@@ -164,7 +164,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 19,
+    id: '19',
     taskName: '제주 항공편 구매',
     status: 'Done',
     priority: 'medium',
@@ -173,7 +173,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 20,
+    id: '20',
     taskName: '영화 소개 웹 페이지 제작하기',
     status: 'Todo',
     priority: 'medium',
@@ -182,7 +182,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 21,
+    id: '21',
     taskName: '프로젝트 피그마 시안 만들기',
     status: 'Done',
     priority: 'medium',
@@ -191,7 +191,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 22,
+    id: '22',
     taskName: '컨퍼런스 등록하기',
     status: 'Todo',
     priority: 'high',
@@ -200,7 +200,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 23,
+    id: '23',
     taskName: '코딩용 플레이리스트 만들기',
     status: 'Todo',
     priority: 'low',
@@ -209,7 +209,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 24,
+    id: '24',
     taskName: '프로젝트 스크럼 정하기',
     status: 'Todo',
     priority: 'medium',
@@ -218,7 +218,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 25,
+    id: '25',
     taskName: '타입스크립트 강의 듣기',
     status: 'Done',
     priority: 'medium',
@@ -227,7 +227,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 26,
+    id: '26',
     taskName: '2주차 스터디 과제하기',
     status: 'InProgress',
     priority: 'medium',
@@ -236,7 +236,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 27,
+    id: '27',
     taskName: '기술면접 클리닉 참여',
     status: 'Done',
     priority: 'high',
@@ -245,7 +245,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 28,
+    id: '28',
     taskName: '수영장 등록하기',
     status: 'Todo',
     priority: 'low',
@@ -254,7 +254,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 29,
+    id: '29',
     taskName: '자바스크립트 완벽 가이드 1회독',
     status: 'Done',
     priority: 'medium',
@@ -263,7 +263,7 @@ export const TODOS: Itodo[] = [
     dueDate: '',
   },
   {
-    id: 30,
+    id: '30',
     taskName: '오픈소스 등록하기',
     status: 'Todo',
     priority: 'medium',
