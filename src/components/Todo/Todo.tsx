@@ -90,20 +90,20 @@ const marginByPosition = (props: StyledTodoProps) => {
   }
   return css`
     padding: 16px;
-    transition: none;
   `;
 };
 
 const TodoContainer = styled.div<StyledTodoProps>`
+  padding: ${({ theme }) => theme.layout.listPadding};
+  transition: 0.5s all ease;
+  ${props => marginByPosition(props)};
+  background-color: rgba(0, 0, 0, 0);
+`;
+const TodoContent = styled.div`
   box-shadow: ${({ theme }) => theme.layout.dropShadow};
   color: ${({ theme }) => theme.color.todoFont};
   border-radius: ${({ theme }) => theme.layout.radius};
-  padding: ${({ theme }) => theme.layout.listPadding};
   background-color: ${({ theme }) => theme.color.whiteBackground};
-  transition: 0.5s padding ease;
-  ${props => marginByPosition(props)}
-`;
-const TodoContent = styled.div`
   padding: 30px;
   border: 1px solid black;
   border-radius: 10px;
