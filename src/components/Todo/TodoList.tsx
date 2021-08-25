@@ -98,7 +98,7 @@ const TodoForm = styled.form`
 
 const Input = styled.input`
   min-width: 300px;
-  padding: 16px;
+  padding: ${({ theme }) => theme.layout.padding};
   background-color: ${({ theme }) => theme.color.whiteBackground};
   border-radius: ${({ theme }) => theme.layout.radius};
   font-weight: ${({ theme }) => theme.layout.fontBold};
@@ -106,7 +106,7 @@ const Input = styled.input`
 
 const Select = styled.select`
   margin: 10px 10px;
-  padding: 16px;
+  padding: ${({ theme }) => theme.layout.padding};
   cursor: pointer;
   border-radius: ${({ theme }) => theme.layout.radius};
 `;
@@ -116,14 +116,14 @@ const ErrorMessage = styled.p`
   display: flex;
   justify-content: center;
   margin: 10px;
-  font-weight: bold;
+  font-weight: ${({ theme }) => theme.layout.fontBold};
   font-size: 18px;
 `;
 
 const MainContainer = styled.main`
   display: flex;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: ${({ theme }) => theme.layout.listPadding};
 `;
 
 export default TodoList;

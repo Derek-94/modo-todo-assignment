@@ -74,7 +74,6 @@ const ColumnContatiner = styled.div`
 `;
 
 const Todos = styled.div`
-  height: 100%;
   margin-top: ${({ theme }) => theme.layout.gap};
 `;
 

@@ -119,9 +119,8 @@ const TodoContent = styled.div`
   color: ${({ theme }) => theme.color.todoFont};
   border-radius: ${({ theme }) => theme.layout.radius};
   background-color: ${({ theme }) => theme.color.whiteBackground};
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 10px;
+  padding: ${({ theme }) => theme.layout.listPadding};
+  border: 1px solid ${({ theme }) => theme.color.borderline};
   display: flex;
   justify-content: space-between;
 `;
@@ -129,7 +128,7 @@ const TodoContent = styled.div`
 const Icon = styled(FontAwesomeIcon)`
   cursor: pointer;
   :hover {
-    color: green;
+    color: ${({ theme }) => theme.color.green};
     transform: scale(1.1);
     transition: all 0.5s;
   }
