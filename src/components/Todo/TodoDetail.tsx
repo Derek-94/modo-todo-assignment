@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Itodo } from 'types';
 import styled from 'styled-components';
 import useForm from 'hooks/useForm';
+
 interface DetailProps {
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   todo: Itodo;
 }
+
 type InputElement = HTMLInputElement | HTMLTextAreaElement;
+
 const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
   const { formData, onFormChange } = useForm<Itodo>(todo);
   const [isUpdated, setIsUpdate] = useState(false);
@@ -14,14 +17,13 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
   const handlerChange = (e: React.ChangeEvent<InputElement>) => {
     onFormChange(e);
   };
+
   const handlerKeyDown = (e: React.KeyboardEvent<InputElement>) => {
     e.stopPropagation();
     if (e.code === 'Escape') {
       setIsUpdate(false);
       setIsTitleUpdated(false);
-      return;
-    }
-    if (e.code === 'Enter') {
+    } else if (e.code === 'Enter') {
       setTodoState(prev =>
         prev.map(state => {
           if (state.id === todo.id) {
@@ -35,7 +37,6 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
       );
       setIsUpdate(false);
       setIsTitleUpdated(false);
-      return;
     }
   };
   return (

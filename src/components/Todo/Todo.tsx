@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Itodo } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
 import { useDragDispatch, useDragState } from 'contexts';
-import ModalDetail from './TodoDetail';
+import TodoDetail from './TodoDetail';
 import useModal from 'hooks/useModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
@@ -88,7 +88,7 @@ const Todo: React.FC<TodoProps> = ({
       </TodoContainer>
       {isModalOpen && (
         <Modal toggle={toggleModal}>
-          <ModalDetail setTodoState={setTodoState} todo={todo} />
+          <TodoDetail setTodoState={setTodoState} todo={todo} />
         </Modal>
       )}
     </>
