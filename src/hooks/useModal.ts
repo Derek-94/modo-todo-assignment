@@ -1,15 +1,9 @@
 import { useState } from 'react';
 
-interface UseModalReturn {
-  isModalOpen: boolean;
-  toggleModal: () => void;
-}
+type UseModalReturn = [boolean, () => void];
 const useModal = (): UseModalReturn => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-  return {
-    isModalOpen,
-    toggleModal,
-  };
+  return [isModalOpen, toggleModal];
 };
 export default useModal;

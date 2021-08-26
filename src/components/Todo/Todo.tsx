@@ -5,14 +5,14 @@ import useModal from 'hooks/useModal';
 import { Itodo } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
 import { useDragDispatch, useDragState } from 'contexts';
-
+import TodoDetail from './TodoDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface TodoProps {
   todo: Itodo;
   todos: Itodo[];
-  setTodoState: (todos: Itodo[]) => void;
+  setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   onDeleteTodo: (id: string) => void;
 }
 
@@ -22,6 +22,9 @@ const Todo: React.FC<TodoProps> = ({
   setTodoState,
   onDeleteTodo,
 }) => {
+  const [isDeleteModal, toggleDeleteModal] = useModal();
+  const [isDetailModal, toggleDetailModal] = useModal();
+
   const dispatch = useDragDispatch();
   const { position, hover } = useDragState();
   const todoRef = useRef<HTMLDivElement>(null);
@@ -62,37 +65,43 @@ const Todo: React.FC<TodoProps> = ({
       });
     }
   };
-
-  const { isModalOpen, toggleModal } = useModal();
-  const onClickIcon: React.MouseEventHandler<SVGSVGElement> = () => {
-    todo.status === 'Done' ? onDeleteTodo(todo.id) : toggleModal();
+  const onClickIcon: React.MouseEventHandler<SVGSVGElement> = e => {
+    e.stopPropagation();
+    todo.status === 'Done' ? onDeleteTodo(todo.id) : toggleDeleteModal();
   };
   const confirmModal = () => {
     onDeleteTodo(todo.id);
   };
-
   return (
-    <TodoContainer
-      ref={todoRef}
-      draggable
-      data-id={todo.id}
-      onDragStart={handleDragStart}
-      onDragOver={handlerDragOver}
-      onDragEnd={handleDragEnd}
-      onDrop={handleDrop}
-      focus={hover === todo.id}
-      position={position}
-    >
-      <TodoContent>
-        {todo.taskName}
-        <Icon icon={faTrashAlt} onClick={onClickIcon} />
-      </TodoContent>
-      {isModalOpen && (
-        <Modal alert toggle={toggleModal} callback={confirmModal}>
+    <>
+      <TodoContainer
+        ref={todoRef}
+        draggable
+        data-id={todo.id}
+        onDragStart={handleDragStart}
+        onDragOver={handlerDragOver}
+        onDragEnd={handleDragEnd}
+        onDrop={handleDrop}
+        focus={hover === todo.id}
+        position={position}
+        onClick={toggleDetailModal}
+      >
+        <TodoContent>
+          {todo.taskName}
+          <Icon icon={faTrashAlt} onClick={onClickIcon} />
+        </TodoContent>
+      </TodoContainer>
+      {isDetailModal && (
+        <Modal cancelBtn={false} toggle={toggleDetailModal}>
+          <TodoDetail setTodoState={setTodoState} todo={todo} />
+        </Modal>
+      )}
+      {isDeleteModal && (
+        <Modal alert toggle={toggleDeleteModal} callback={confirmModal}>
           아직 완료되지 않은 항목인데 삭제하시겠습니까?
         </Modal>
       )}
-    </TodoContainer>
+    </>
   );
 };
 

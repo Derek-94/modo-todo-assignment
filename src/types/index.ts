@@ -6,6 +6,7 @@ export interface Itodo {
   createdAt?: string;
   updatedAt?: string;
   dueDate?: string;
+  memo?: string;
 }
 
 export interface ClickObj {

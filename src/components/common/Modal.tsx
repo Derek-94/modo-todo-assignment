@@ -43,7 +43,6 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
         {title && <Title>{title}</Title>}
         <Content>{children}</Content>
         <ButtonContainer>
-          {!alert && <Button onClick={toggle}>취소</Button>}
           {cancelBtn && (
             <Button onClick={toggle} Small={alert || Small}>
               취소
