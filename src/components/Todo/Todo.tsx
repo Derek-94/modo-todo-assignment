@@ -65,9 +65,7 @@ const Todo: React.FC<TodoProps> = ({
 
   const { isModalOpen, toggleModal } = useModal();
   const onClickIcon: React.MouseEventHandler<SVGSVGElement> = () => {
-    if (todo.status === 'Done') {
-      onDeleteTodo(todo.id);
-    } else toggleModal();
+    todo.status === 'Done' ? onDeleteTodo(todo.id) : toggleModal();
   };
   const confirmModal = () => {
     onDeleteTodo(todo.id);
