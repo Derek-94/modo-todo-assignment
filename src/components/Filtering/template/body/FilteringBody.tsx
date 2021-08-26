@@ -51,7 +51,7 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
             onClick={() => handlerFiltering('PRIORITY', priority)}
             key={idx}
           >
-            {priority}({idx + 1})
+            {priority}
           </span>
         ))}
       </DropMenu>
