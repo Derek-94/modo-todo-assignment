@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MENU } from 'constant';
-import { ClickObj } from 'types';
+import { ClickObj, PriorityType, FilterReducer } from 'types';
 
 interface FilteringBodyProps {
-  handlerFiltering: (target: string) => void;
+  handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
   handlerDropdown: () => void;
   dropdownOpen: boolean;
   click: ClickObj;
@@ -16,26 +16,29 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
   dropdownOpen,
   click,
 }) => {
+  const handlerOrigin = () => {
+    handlerFiltering('INIT');
+  };
+  const handlerDeadline = () => {
+    handlerFiltering('DEADLINE');
+  };
   return (
     <FilteringBodyBlock>
-      <OriginBtn
-        onClick={() => handlerFiltering(MENU.FILTER[0])}
-        originCheck={click.origin}
-      >
+      <Btn check={!click.deadline && !click.priority} onClick={handlerOrigin}>
         {MENU.FILTER[0]}
-      </OriginBtn>
-      <DeadlineBtn
-        onClick={() => handlerFiltering(MENU.FILTER[1])}
-        deadlineCheck={click.deadline}
-      >
+      </Btn>
+      <Btn onClick={handlerDeadline} check={click.deadline}>
         {MENU.FILTER[1]}
-      </DeadlineBtn>
-      <PriorityBtn onClick={handlerDropdown} priorityCheck={click.priority}>
-        {click.priorityTarget || MENU.FILTER[2]}
-      </PriorityBtn>
+      </Btn>
+      <Btn onClick={handlerDropdown} check={click.priority ? true : false}>
+        {click.priority || MENU.FILTER[2]}
+      </Btn>
       <DropMenu checkDropdown={dropdownOpen}>
         {MENU.PRIORITY.map((priority, idx) => (
-          <span onClick={() => handlerFiltering(priority)} key={idx}>
+          <span
+            onClick={() => handlerFiltering('PRIORITY', priority)}
+            key={idx}
+          >
             {priority}
           </span>
         ))}
@@ -56,15 +59,8 @@ const FilteringBodyBlock = styled.div`
   }
 `;
 
-const OriginBtn = styled.button<{ originCheck: boolean }>`
-  background-color: ${props => (props.originCheck ? '#dd346c' : '#fafafa')};
-`;
-const PriorityBtn = styled.button<{ priorityCheck: boolean }>`
-  background-color: ${props => (props.priorityCheck ? '#dd346c' : '#fafafa')};
-  text-align: center;
-`;
-const DeadlineBtn = styled.button<{ deadlineCheck: boolean }>`
-  background-color: ${props => (props.deadlineCheck ? '#dd346c' : '#fafafa')};
+const Btn = styled.button<{ check: boolean }>`
+  background-color: ${props => (props.check ? '#dd346c' : '#fafafa')};
 `;
 
 const DropMenu = styled.div<{ checkDropdown: boolean }>`
