@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import { TODOS, STATUS } from 'constant';
+import React from 'react';
+import { STATUS } from 'constant';
 import { StatusKey } from 'types';
 import Column from './Column';
+import TodoFormWrapper from './TodoFormWrapper';
 import styled from 'styled-components';
 import DragProvider from 'contexts/DragContext';
 
 import { useFiltering } from 'components/Filtering/FilteringService';
-import FilteringContainer from 'components/Filtering/FilteringContainer';
 
 const TodoList: React.FC = () => {
-  const { handlerFiltering, handlerDropdown, dropdownOpen, todoState, click } =
-    useFiltering();
+  const { todoState, setTodoState } = useFiltering();
 
   const filterList = (status: StatusKey) =>
     todoState.filter(todo => todo.status === status);
 
+  const onDeleteTodo = (id: string) => {
+    setTodoState(todoState.filter(todo => todo.id !== id));
+  };
+
   return (
     <>
-      <FilteringContainer
-        handlerFiltering={handlerFiltering}
-        handlerDropdown={handlerDropdown}
-        dropdownOpen={dropdownOpen}
-        click={click}
-      />
-    <MainContainer>
-      <DragProvider>
-        {STATUS.map((status, i) => (
-          <Column
-            key={i}
-            status={status}
-            filtered={filterList(status)}
-            todos={todoState}
-            setTodoState={setTodoState}
-          />
-        ))}
-      </DragProvider>
-    </MainContainer>
-  </>
+      <TodoFormWrapper />
+      <MainContainer>
+        <DragProvider>
+          {STATUS.map((status, i) => (
+            <Column
+              key={i}
+              status={status}
+              filtered={filterList(status)}
+              todos={todoState}
+              setTodoState={setTodoState}
+              onDeleteTodo={onDeleteTodo}
+            />
+          ))}
+        </DragProvider>
+      </MainContainer>
+    </>
   );
 };
+
 const MainContainer = styled.main`
   display: flex;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: ${({ theme }) => theme.layout.listPadding};
 `;
 
 export default TodoList;

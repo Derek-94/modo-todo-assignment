@@ -34,12 +34,10 @@ const FilteringContainer: React.FC<FilteringContainerProps> = ({
 export default FilteringContainer;
 
 const FilteringWrapper = styled.div`
-  top: 100px;
-  min-height: 80px;
+  min-height: 55px;
   position: relative;
   background: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0px 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

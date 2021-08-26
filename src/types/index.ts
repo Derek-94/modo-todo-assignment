@@ -20,5 +20,5 @@ export interface MenuObj {
   FILTER: string[];
 }
 
-export type PriorityType = 'low' | 'medium' | 'high';
+export type PriorityType = '' | 'low' | 'medium' | 'high';
 export type StatusKey = 'Todo' | 'InProgress' | 'Done';
