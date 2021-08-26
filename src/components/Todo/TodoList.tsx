@@ -7,11 +7,21 @@ import uuidv4 from '../../utils/getUuid';
 import styled from 'styled-components';
 import DragProvider from 'contexts/DragContext';
 
+import { useFiltering } from 'components/Filtering/FilteringService';
+import FilteringContainer from 'components/Filtering/FilteringContainer';
+
 const TodoList: React.FC = () => {
   const [inputTodo, setInputTodo] = useState<string>('');
   const [priority, setPriority] = useState<PriorityType>('');
   const [validationError, setValidationError] = useState<boolean>(false);
-  const [todoState, setTodoState] = useState<Itodo[]>(TODOS);
+  const {
+    handlerFiltering,
+    handlerDropdown,
+    dropdownOpen,
+    todoState,
+    setTodoState,
+    click,
+  } = useFiltering();
 
   const filterList = (status: StatusKey) =>
     todoState.filter(todo => todo.status === status);
@@ -67,6 +77,12 @@ const TodoList: React.FC = () => {
         <Button Large onClick={onRegisterTodo}>
           등록
         </Button>
+        <FilteringContainer
+          handlerFiltering={handlerFiltering}
+          handlerDropdown={handlerDropdown}
+          dropdownOpen={dropdownOpen}
+          click={click}
+        />
       </TodoForm>
       {validationError && (
         <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>

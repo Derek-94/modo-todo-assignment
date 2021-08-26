@@ -1,4 +1,4 @@
-import { Itodo, StatusKey } from 'types';
+import { Itodo, StatusKey, MenuObj } from 'types';
 import uuidv4 from '../utils/getUuid';
 
 export const TODOS: Itodo[] = [
@@ -9,7 +9,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-24',
   },
   {
     id: uuidv4(),
@@ -18,7 +18,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-25',
   },
   {
     id: uuidv4(),
@@ -27,7 +27,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-26',
   },
   {
     id: uuidv4(),
@@ -36,7 +36,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-27',
   },
   {
     id: uuidv4(),
@@ -45,7 +45,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-28',
   },
   {
     id: uuidv4(),
@@ -54,7 +54,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-29',
   },
   {
     id: uuidv4(),
@@ -63,7 +63,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-08-30',
   },
   {
     id: uuidv4(),
@@ -72,7 +72,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-01',
   },
   {
     id: uuidv4(),
@@ -81,7 +81,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-02',
   },
   {
     id: uuidv4(),
@@ -90,7 +90,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-03',
   },
   {
     id: uuidv4(),
@@ -99,7 +99,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-04',
   },
   {
     id: uuidv4(),
@@ -108,7 +108,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-05',
   },
   {
     id: uuidv4(),
@@ -117,7 +117,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-06',
   },
   {
     id: uuidv4(),
@@ -126,7 +126,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-07',
   },
   {
     id: uuidv4(),
@@ -135,7 +135,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-08',
   },
   {
     id: uuidv4(),
@@ -144,7 +144,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-09',
   },
   {
     id: uuidv4(),
@@ -153,7 +153,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-10',
   },
   {
     id: uuidv4(),
@@ -162,7 +162,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-11',
   },
   {
     id: uuidv4(),
@@ -171,7 +171,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-12',
   },
   {
     id: uuidv4(),
@@ -180,7 +180,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: uuidv4(),
@@ -189,7 +189,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: uuidv4(),
@@ -198,7 +198,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: uuidv4(),
@@ -207,7 +207,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-13',
   },
   {
     id: uuidv4(),
@@ -216,7 +216,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-14',
   },
   {
     id: uuidv4(),
@@ -225,7 +225,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-14',
   },
   {
     id: uuidv4(),
@@ -234,7 +234,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: uuidv4(),
@@ -243,7 +243,7 @@ export const TODOS: Itodo[] = [
     priority: 'high',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: uuidv4(),
@@ -252,7 +252,7 @@ export const TODOS: Itodo[] = [
     priority: 'low',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: uuidv4(),
@@ -261,7 +261,7 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-15',
   },
   {
     id: uuidv4(),
@@ -270,8 +270,13 @@ export const TODOS: Itodo[] = [
     priority: 'medium',
     createdAt: '',
     updatedAt: '',
-    dueDate: '',
+    dueDate: '2021-09-16',
   },
 ];
 
 export const STATUS: StatusKey[] = ['Todo', 'InProgress', 'Done'];
+
+export const MENU: MenuObj = Object.freeze({
+  PRIORITY: ['low', 'medium', 'high'],
+  FILTER: ['Init', 'Deadline', 'Priority'],
+});
