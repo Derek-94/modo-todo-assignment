@@ -5,6 +5,7 @@ interface StyledButtonProps {
   Large?: boolean;
   Small?: boolean;
   select?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const setSize = (props: StyledButtonProps) => {

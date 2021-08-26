@@ -5,6 +5,7 @@ import { getStorage, setStorage } from 'utils/storage';
 
 interface FilteringData {
   todoState: Itodo[];
+  setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   handlerFiltering: (target: string) => void;
   handlerDropdown: () => void;
   dropdownOpen: boolean;
@@ -162,6 +163,7 @@ export const useFiltering = (): FilteringData => {
 
   return {
     todoState,
+    setTodoState,
     handlerFiltering,
     handlerDropdown,
     dropdownOpen,
