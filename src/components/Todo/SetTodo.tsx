@@ -25,7 +25,7 @@ const SetTodo: React.FC<setTodoProps> = ({ todoLength, setTodos }) => {
       {showClear ? (
         <Button onClick={clearTodos}>전체 지우기</Button>
       ) : (
-        <Button onClick={showDummy}>초기 데이터 불러오기</Button>
+        <Button onClick={showDummy}>더미 데이터 불러오기</Button>
       )}
     </SetTodoWrap>
   );
