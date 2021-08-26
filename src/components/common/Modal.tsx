@@ -17,7 +17,7 @@ const ModalPortal = (modal: React.ReactElement): React.ReactPortal => {
 };
 
 const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
-  const { Small, toggle, callback, title, alert, cancelBtn } = props;
+  const { Small, toggle, callback, title, alert, cancelBtn = true } = props;
 
   const escapeEvent = (e: KeyboardEvent) => {
     if (e.code === 'Escape') {

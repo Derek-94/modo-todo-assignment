@@ -88,12 +88,7 @@ const Todo: React.FC<TodoProps> = ({
         <Icon icon={faTrashAlt} onClick={onClickIcon} />
       </TodoContent>
       {isModalOpen && (
-        <Modal
-          alert
-          cancelBtn={true}
-          toggle={toggleModal}
-          callback={confirmModal}
-        >
+        <Modal alert toggle={toggleModal} callback={confirmModal}>
           아직 완료되지 않은 항목인데 삭제하시겠습니까?
         </Modal>
       )}
