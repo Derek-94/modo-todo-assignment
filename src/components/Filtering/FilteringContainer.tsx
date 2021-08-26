@@ -36,7 +36,7 @@ const FilteringWrapper = styled.div`
   min-height: 55px;
   position: relative;
   background: white;
-  margin: 10px 0px 10px 10px;
+  margin: 90px 0px 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
