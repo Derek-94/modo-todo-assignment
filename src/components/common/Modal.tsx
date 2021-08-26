@@ -4,12 +4,12 @@ import styled, { css } from 'styled-components';
 import Button from './Button';
 
 interface ModalProps {
-  show?: boolean;
   Small?: boolean;
   toggle: () => void;
   callback?: () => void;
   title?: string;
   alert?: boolean;
+  cancelBtn?: boolean;
 }
 
 const ModalPortal = (modal: React.ReactElement): React.ReactPortal => {
@@ -17,10 +17,8 @@ const ModalPortal = (modal: React.ReactElement): React.ReactPortal => {
 };
 
 const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
-  const { show, Small, toggle, callback, title, alert } = props;
-  if (!show) {
-    return null;
-  }
+  const { Small, toggle, callback, title, alert, cancelBtn } = props;
+
   const escapeEvent = (e: KeyboardEvent) => {
     if (e.code === 'Escape') {
       toggle();
@@ -31,7 +29,8 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
     return () => {
       window.removeEventListener('keydown', escapeEvent);
     };
-  }, [show]);
+  }, []);
+
   const onConfirm = () => {
     if (callback) {
       callback();
@@ -45,6 +44,11 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
         <Content>{children}</Content>
         <ButtonContainer>
           {!alert && <Button onClick={toggle}>취소</Button>}
+          {cancelBtn && (
+            <Button onClick={toggle} Small={alert || Small}>
+              취소
+            </Button>
+          )}
           <Button onClick={onConfirm} Small={alert || Small}>
             확인
           </Button>
