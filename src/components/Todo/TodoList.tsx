@@ -1,15 +1,23 @@
 import React from 'react';
 import { STATUS } from 'constant';
-import { StatusKey } from 'types';
+import { Itodo, StatusKey } from 'types';
 import Column from './Column';
-import TodoFormWrapper from './TodoFormWrapper';
+import TodoForm from './TodoForm';
 import styled from 'styled-components';
 import DragProvider from 'contexts/DragContext';
 
 import { useFiltering } from 'components/Filtering/FilteringService';
+import FilteringContainer from 'components/Filtering/FilteringContainer';
 
 const TodoList: React.FC = () => {
-  const { todoState, setTodoState } = useFiltering();
+  const {
+    handlerFiltering,
+    handlerDropdown,
+    dropdownOpen,
+    click,
+    todoState,
+    setTodoState,
+  } = useFiltering();
 
   const filterList = (status: StatusKey) =>
     todoState.filter(todo => todo.status === status);
@@ -18,9 +26,21 @@ const TodoList: React.FC = () => {
     setTodoState(todoState.filter(todo => todo.id !== id));
   };
 
+  const onAddTodo = (newTodo: Itodo) => {
+    setTodoState([...todoState, newTodo]);
+  };
+
   return (
     <>
-      <TodoFormWrapper />
+      <TodoFormWrapper>
+        <TodoForm onAddTodo={onAddTodo} />
+        <FilteringContainer
+          handlerFiltering={handlerFiltering}
+          handlerDropdown={handlerDropdown}
+          dropdownOpen={dropdownOpen}
+          click={click}
+        />
+      </TodoFormWrapper>
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
@@ -38,6 +58,13 @@ const TodoList: React.FC = () => {
     </>
   );
 };
+
+const TodoFormWrapper = styled.div`
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+`;
 
 const MainContainer = styled.main`
   display: flex;
