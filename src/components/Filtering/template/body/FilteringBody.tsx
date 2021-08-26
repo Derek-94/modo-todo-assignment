@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MENU } from 'constant';
 import { ClickObj, PriorityType, FilterReducer } from 'types';
 
@@ -40,10 +40,10 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
       </Btn>
       <Btn onClick={handlerDropdown} title="중요도">
         <Icon icon={faListOl} check={click.priority ? true : false} />
-        <Priority1 checkPriority={click.priority || ''}></Priority1>
-        <Priority3 checkPriority={click.priority || ''}></Priority3>
-        <Priority2Top checkPriority={click.priority || ''}></Priority2Top>
-        <Priority2Bot checkPriority={click.priority || ''}></Priority2Bot>
+        <PriorityLow checkPriority={click.priority || ''}></PriorityLow>
+        <PriorityHigh checkPriority={click.priority || ''}></PriorityHigh>
+        <PriorityMidTop checkPriority={click.priority || ''}></PriorityMidTop>
+        <PriorityMidBot checkPriority={click.priority || ''}></PriorityMidBot>
       </Btn>
       <DropMenu checkDropdown={dropdownOpen}>
         {MENU.PRIORITY.map((priority, idx) => (
@@ -107,46 +107,31 @@ const Icon = styled(FontAwesomeIcon)<{ check: boolean }>`
   color: ${props => (props.check ? '#dd346c' : '#dfdfdf')};
 `;
 
-const Priority1 = styled.div<{ checkPriority: string }>`
-  display: ${props => (props.checkPriority === 'low' ? 'flex' : 'none')};
+const PriorityProp = (margin: number, height: number, target: string) => css<{
+  checkPriority: string;
+}>`
+  display: ${props => (props.checkPriority === `${target}` ? 'flex' : 'none')};
   position: absolute;
   z-index: 1000;
   background-color: ${({ theme }) => theme.color.whiteBackground};
   width: 40px;
-  height: 20px;
+  height: ${height}px;
   z-index: 100;
-  margin-top: -16px;
+  margin-top: ${margin}px;
 `;
 
-const Priority3 = styled.div<{ checkPriority: string }>`
-  display: ${props => (props.checkPriority === 'high' ? 'flex' : 'none')};
-  position: absolute;
-  z-index: 1000;
-  background-color: ${({ theme }) => theme.color.whiteBackground};
-  width: 40px;
-  height: 20px;
-  z-index: 100;
-  margin-top: -29px;
+const PriorityLow = styled.div`
+  ${PriorityProp(-16, 20, 'low')}
 `;
 
-const Priority2Top = styled.div<{ checkPriority: string }>`
-  display: ${props => (props.checkPriority === 'medium' ? 'flex' : 'none')};
-  position: absolute;
-  z-index: 1000;
-  background-color: ${({ theme }) => theme.color.whiteBackground};
-  width: 40px;
-  height: 12px;
-  z-index: 100;
-  margin-top: -29px;
+const PriorityHigh = styled.div`
+  ${PriorityProp(-29, 20, 'high')}
 `;
 
-const Priority2Bot = styled.div<{ checkPriority: string }>`
-  display: ${props => (props.checkPriority === 'medium' ? 'flex' : 'none')};
-  position: absolute;
-  z-index: 1000;
-  background-color: ${({ theme }) => theme.color.whiteBackground};
-  width: 40px;
-  height: 12px;
-  z-index: 100;
-  margin-top: -8px;
+const PriorityMidTop = styled.div`
+  ${PriorityProp(-29, 12, 'medium')}
+`;
+
+const PriorityMidBot = styled.div`
+  ${PriorityProp(-8, 12, 'medium')}
 `;
