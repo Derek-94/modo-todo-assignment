@@ -7,5 +7,6 @@ export const setStorage = (key: string, value: StorageValue): void => {
 };
 
 export const getStorage = (key: string): StorageValue => {
-  return JSON.parse(window.localStorage.getItem(key) || '[]');
+  const data = JSON.parse(window.localStorage.getItem(key) || '[]');
+  return data.length ? data : null;
 };

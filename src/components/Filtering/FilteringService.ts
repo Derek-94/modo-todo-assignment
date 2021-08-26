@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Itodo, ClickObj } from 'types';
 import { MENU } from 'constant';
-import TODOS from 'constant/dummy.json';
+import TODOS from 'constant/default.json';
 import { getStorage, setStorage } from 'utils/storage';
 
 interface FilteringData {
@@ -13,11 +13,9 @@ interface FilteringData {
   click: ClickObj;
 }
 
-const initialTodos: Itodo[] = TODOS as Itodo[];
-
 export const useFiltering = (): FilteringData => {
-  const [originalData] = useState<Itodo[]>(initialTodos);
-  const [todoState, setTodoState] = useState(initialTodos);
+  const [originalData] = useState<Itodo[]>([]);
+  const [todoState, setTodoState] = useState<Itodo[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [click, setClick] = useState({
     origin: true,
@@ -27,12 +25,12 @@ export const useFiltering = (): FilteringData => {
   });
 
   useEffect(() => {
-    // setStorage('todos', TODOS);
-    // const getData = getStorage('todos') || [];
+    const getData = (getStorage('modu_todos') || TODOS) as Itodo[];
+    setTodoState(getData);
   }, []);
 
   useEffect(() => {
-    console.log(todoState);
+    setStorage('modu_todos', todoState);
   }, [todoState]);
 
   const handlerFiltering = (target: string): void => {
