@@ -35,10 +35,10 @@ export default FilteringContainer;
 const FilteringWrapper = styled.div`
   min-height: 55px;
   position: relative;
-  background: white;
-  margin: 10px 0px 10px 10px;
+  background-color: ${({ theme }) => theme.color.whiteBackground};
+  margin: 80px 0 0 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   border-radius: ${({ theme }) => theme.layout.radius};
 `;

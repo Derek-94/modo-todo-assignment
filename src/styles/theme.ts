@@ -8,6 +8,7 @@ export const theme = {
     borderline: '#B6AFAF',
     headerFont: '#B6E4C3',
     todoFont: '#3B4C69',
+    filterFont: '#dd346c',
   },
   layout: {
     radius: '5px',
