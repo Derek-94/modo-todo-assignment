@@ -1,7 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { MENU } from 'constant';
 import { ClickObj, PriorityType, FilterReducer } from 'types';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faExclamationCircle,
+  faListOl,
+  faClipboard,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface FilteringBodyProps {
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
@@ -22,16 +29,21 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
   const handlerDeadline = () => {
     handlerFiltering('DEADLINE');
   };
+
   return (
     <FilteringBodyBlock>
-      <Btn check={!click.deadline && !click.priority} onClick={handlerOrigin}>
-        {MENU.FILTER[0]}
+      <Btn onClick={handlerOrigin} title="초기화">
+        <Icon icon={faClipboard} check={!click.deadline && !click.priority} />
       </Btn>
-      <Btn onClick={handlerDeadline} check={click.deadline}>
-        {MENU.FILTER[1]}
+      <Btn onClick={handlerDeadline} title="마감임박">
+        <Icon icon={faExclamationCircle} check={click.deadline} />
       </Btn>
-      <Btn onClick={handlerDropdown} check={click.priority ? true : false}>
-        {click.priority || MENU.FILTER[2]}
+      <Btn onClick={handlerDropdown} title="중요도">
+        <Icon icon={faListOl} check={click.priority ? true : false} />
+        <PriorityLow checkPriority={click.priority || ''}></PriorityLow>
+        <PriorityHigh checkPriority={click.priority || ''}></PriorityHigh>
+        <PriorityMidTop checkPriority={click.priority || ''}></PriorityMidTop>
+        <PriorityMidBot checkPriority={click.priority || ''}></PriorityMidBot>
       </Btn>
       <DropMenu checkDropdown={dropdownOpen}>
         {MENU.PRIORITY.map((priority, idx) => (
@@ -59,9 +71,7 @@ const FilteringBodyBlock = styled.div`
   }
 `;
 
-const Btn = styled.button<{ check: boolean }>`
-  background-color: ${props => (props.check ? '#dd346c' : '#fafafa')};
-`;
+const Btn = styled.button``;
 
 const DropMenu = styled.div<{ checkDropdown: boolean }>`
   display: ${props => (props.checkDropdown ? 'flex' : 'none')};
@@ -72,19 +82,56 @@ const DropMenu = styled.div<{ checkDropdown: boolean }>`
   height: 80px;
   box-shadow: 0 0.4rem 1rem 0 rgba(0, 0, 0, 0.2);
   z-index: 100;
-  margin-left: 100px;
-  margin-top: 25px;
-  background-color: #fafafa;
+  margin-left: 150px;
+  margin-top: -15px;
+  background-color: ${({ theme }) => theme.color.whiteBackground};
+  border-radius: 5px;
 
   span {
     border: none;
     cursor: pointer;
-    background-color: #fafafa;
-    text-align: right;
-    margin-right: 10px;
+    background-color: ${({ theme }) => theme.color.whiteBackground};
+    text-align: left;
+    margin-left: 10px;
+    font-weight: ${({ theme }) => theme.layout.fontBold};
 
     &:hover {
       color: #dd346c;
     }
   }
+`;
+
+const Icon = styled(FontAwesomeIcon)<{ check: boolean }>`
+  cursor: pointer;
+  font-size: 25px;
+  color: ${props => (props.check ? '#dd346c' : '#dfdfdf')};
+`;
+
+const PriorityProp = (margin: number, height: number, target: string) => css<{
+  checkPriority: string;
+}>`
+  display: ${props => (props.checkPriority === `${target}` ? 'flex' : 'none')};
+  position: absolute;
+  z-index: 1000;
+  background-color: ${({ theme }) => theme.color.whiteBackground};
+  width: 40px;
+  height: ${height}px;
+  z-index: 100;
+  margin-top: ${margin}px;
+`;
+
+const PriorityLow = styled.div`
+  ${PriorityProp(-16, 20, 'low')}
+`;
+
+const PriorityHigh = styled.div`
+  ${PriorityProp(-29, 20, 'high')}
+`;
+
+const PriorityMidTop = styled.div`
+  ${PriorityProp(-29, 12, 'medium')}
+`;
+
+const PriorityMidBot = styled.div`
+  ${PriorityProp(-8, 12, 'medium')}
 `;
