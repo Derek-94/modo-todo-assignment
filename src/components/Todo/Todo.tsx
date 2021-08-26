@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
+import Modal from 'components/common/Modal';
+import useModal from 'hooks/useModal';
 import { Itodo } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
 import { useDragDispatch, useDragState } from 'contexts';
@@ -61,7 +63,13 @@ const Todo: React.FC<TodoProps> = ({
     }
   };
 
+  const { isModalOpen, toggleModal } = useModal();
   const onClickIcon: React.MouseEventHandler<SVGSVGElement> = () => {
+    if (todo.status === 'Done') {
+      onDeleteTodo(todo.id);
+    } else toggleModal();
+  };
+  const confirmModal = () => {
     onDeleteTodo(todo.id);
   };
 
@@ -81,6 +89,16 @@ const Todo: React.FC<TodoProps> = ({
         {todo.taskName}
         <Icon icon={faTrashAlt} onClick={onClickIcon} />
       </TodoContent>
+      {isModalOpen && (
+        <Modal
+          alert
+          cancelBtn={true}
+          toggle={toggleModal}
+          callback={confirmModal}
+        >
+          아직 완료되지 않은 항목인데 삭제하시겠습니까?
+        </Modal>
+      )}
     </TodoContainer>
   );
 };
