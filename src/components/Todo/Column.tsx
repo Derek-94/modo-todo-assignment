@@ -75,6 +75,7 @@ const ColumnContatiner = styled.div`
 
 const Todos = styled.div`
   margin-top: ${({ theme }) => theme.layout.gap};
+  height: 100%;
 `;
 
 export default Column;

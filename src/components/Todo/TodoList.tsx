@@ -84,6 +84,7 @@ const TodoList: React.FC = () => {
           click={click}
         />
       </TodoForm>
+
       {validationError && (
         <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
       )}
