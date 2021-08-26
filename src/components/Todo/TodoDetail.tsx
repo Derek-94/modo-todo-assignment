@@ -12,8 +12,8 @@ type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
 const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
   const { formData, onFormChange } = useForm<Itodo>(todo);
-  const [isUpdated, setIsUpdate] = useState(false);
-  const [isTitleUpdated, setIsTitleUpdated] = useState(false);
+  const [memoUpdate, setMemoUpdate] = useState(false);
+  const [titleUpdate, setTitleUpdate] = useState(false);
   const handlerChange = (e: React.ChangeEvent<InputElement>) => {
     onFormChange(e);
   };
@@ -29,50 +29,40 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
         return state;
       })
     );
-    setIsUpdate(false);
-    setIsTitleUpdated(false);
+    setMemoUpdate(false);
+    setTitleUpdate(false);
   };
-  const handlerInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handlerTitleKeyEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
     if (e.code === 'Escape') {
-      setIsTitleUpdated(false);
+      setTitleUpdate(false);
     }
     if (e.code === 'Enter') {
       saveDate();
     }
   };
-  const handlerTextareaKeyDown = (
-    e: React.KeyboardEvent<HTMLTextAreaElement>
-  ) => {
+  const handlerMemoKeyEvent = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    e.stopPropagation();
+    if (e.code === 'Escape') {
+      setMemoUpdate(false);
+    }
     if (e.code === 'Enter' && e.ctrlKey) {
-      setTodoState(prev =>
-        prev.map(state => {
-          if (state.id === todo.id) {
-            return {
-              ...state,
-              ...formData,
-            };
-          }
-          return state;
-        })
-      );
-      setIsUpdate(false);
-      setIsTitleUpdated(false);
+      saveDate();
     }
   };
   return (
     <div>
-      {isTitleUpdated ? (
+      {titleUpdate ? (
         <TitleEditor
           autoFocus
           name="taskName"
           value={formData.taskName || ''}
-          onKeyDown={handlerInputKeyDown}
+          onKeyDown={handlerTitleKeyEvent}
           onChange={handlerChange}
-          onBlur={() => setIsTitleUpdated(false)}
+          onBlur={() => setTitleUpdate(false)}
         ></TitleEditor>
       ) : (
-        <Title onDoubleClick={() => setIsTitleUpdated(true)}>
+        <Title onDoubleClick={() => setTitleUpdate(true)}>
           {todo.taskName}
         </Title>
       )}
@@ -81,18 +71,18 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
         <p>updatedAt:{todo.updatedAt}</p>
       </TodoDate>
       <TodoMemoContainer>
-        {isUpdated ? (
+        {memoUpdate ? (
           <MemoEditor
             placeholder="ctrl + Enter 를 이용하여 메모를 저장합니다"
             autoFocus
             name="memo"
             value={formData.memo || ''}
-            onKeyDown={handlerTextareaKeyDown}
+            onKeyDown={handlerMemoKeyEvent}
             onChange={handlerChange}
-            onBlur={() => setIsTitleUpdated(false)}
+            onBlur={() => setTitleUpdate(false)}
           />
         ) : (
-          <TodoMemo onDoubleClick={() => setIsUpdate(true)}>
+          <TodoMemo onDoubleClick={() => setMemoUpdate(true)}>
             {todo.memo || (
               <MemoPlaceholder>
                 <p>메모가 없습니다</p>
