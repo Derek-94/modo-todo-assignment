@@ -17,6 +17,7 @@ export const theme = {
     labelPadding: '5px 10px',
     dropShadow: 'rgba(0, 0, 0, 0.08) 0 4px 2px -2px',
     gap: '20px',
+    formMargin: '10px',
     titleSize: '30px',
     subTitleSize: '20px',
     fontBold: '500',
