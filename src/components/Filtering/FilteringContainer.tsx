@@ -41,4 +41,5 @@ const FilteringWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  border-radius: ${({ theme }) => theme.layout.radius};
 `;

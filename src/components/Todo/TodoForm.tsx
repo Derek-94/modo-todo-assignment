@@ -2,23 +2,17 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../common/Button';
 
-import { PriorityType } from 'types';
+import { Itodo, PriorityType } from 'types';
 import uuidv4 from 'utils/getUuid';
-import { useFiltering } from 'components/Filtering/FilteringService';
-import FilteringContainer from 'components/Filtering/FilteringContainer';
 
-const TodoFormWrapper: React.FC = () => {
+interface TodoWrapperProps {
+  onAddTodo: (newTodo: Itodo) => void;
+}
+
+const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
   const [inputTodo, setInputTodo] = useState<string>('');
   const [priority, setPriority] = useState<PriorityType>('');
   const [validationError, setValidationError] = useState<boolean>(false);
-  const {
-    handlerFiltering,
-    handlerDropdown,
-    dropdownOpen,
-    todoState,
-    setTodoState,
-    click,
-  } = useFiltering();
 
   const onChangeInput: React.ChangeEventHandler<HTMLInputElement> = e => {
     setInputTodo(e.currentTarget.value);
@@ -35,21 +29,18 @@ const TodoFormWrapper: React.FC = () => {
     } else {
       setValidationError(() => false);
       setInputTodo('');
-      setTodoState([
-        ...todoState,
-        {
-          id: uuidv4(),
-          taskName: inputTodo,
-          status: 'Todo',
-          priority: priority,
-        },
-      ]);
+      onAddTodo({
+        id: uuidv4(),
+        taskName: inputTodo,
+        status: 'Todo',
+        priority: priority,
+      });
     }
   };
 
   return (
     <>
-      <TodoForm>
+      <Form>
         <Input
           required
           value={inputTodo}
@@ -67,13 +58,7 @@ const TodoFormWrapper: React.FC = () => {
         <Button Large onClick={onRegisterTodo}>
           등록
         </Button>
-        <FilteringContainer
-          handlerFiltering={handlerFiltering}
-          handlerDropdown={handlerDropdown}
-          dropdownOpen={dropdownOpen}
-          click={click}
-        />
-      </TodoForm>
+      </Form>
       {validationError && (
         <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
       )}
@@ -81,7 +66,7 @@ const TodoFormWrapper: React.FC = () => {
   );
 };
 
-const TodoForm = styled.form`
+const Form = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,4 +97,4 @@ const ErrorMessage = styled.p`
   font-size: 18px;
 `;
 
-export default TodoFormWrapper;
+export default TodoForm;
