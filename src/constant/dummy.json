@@ -1,0 +1,271 @@
+[{
+  "id": "71cbc035-9495-4030-b40f-3978262e8f7b",
+  "taskName": "기본세팅",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-26"
+},
+{
+  "id": "e85aabb3-88fd-4586-a302-3a84a713a9be",
+  "taskName": "원티드프로젝트",
+  "status": "InProgress",
+  "priority": "high",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-26"
+},
+{
+  "id": "9e1371ba-11d5-43ec-866c-7e580ce3902b",
+  "taskName": "자소서 쓰기",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-26"
+},
+{
+  "id": "523f4136-9044-443e-935a-1baab747ab2c",
+  "taskName": "리드미 작성",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-27"
+},
+{
+  "id": "9d56bdfc-6b61-4b1b-a295-e694433ac989",
+  "taskName": "거리 두기",
+  "status": "InProgress",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-27"
+},
+{
+  "id": "2674b762-153b-4d46-9824-291c5e431ca5",
+  "taskName": "회의",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-27"
+},
+{
+  "id": "ebcfbe46-0222-4f70-a14f-ff55e1dd6228",
+  "taskName": "캐치마인드",
+  "status": "InProgress",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-27"
+},
+{
+  "id": "e4d151cc-cc37-4e54-a57f-c3f675e3364c",
+  "taskName": "백신 예약하기",
+  "status": "Done",
+  "priority": "high",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-27"
+},
+{
+  "id": "bab93424-16e9-4c9a-a029-626246a1fe04",
+  "taskName": "전입 신고",
+  "status": "InProgress",
+  "priority": "high",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-28"
+},
+{
+  "id": "ceeb42a0-602b-4cee-a81f-b499d20da041",
+  "taskName": "기술 블로그 작성",
+  "status": "InProgress",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-28"
+},
+{
+  "id": "227cd9ef-6c9d-4c0e-9af7-c597f4febdb0",
+  "taskName": "집들이 선물사기",
+  "status": "InProgress",
+  "priority": "low",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-28"
+},
+{
+  "id": "48922ba6-9554-42dd-b992-6a98a80458f2",
+  "taskName": "에어컨 수리",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-28"
+},
+{
+  "id": "15422e0e-727b-4722-84e5-4dbbca2244df",
+  "taskName": "여름 이불 빨래",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-29"
+},
+{
+  "id": "15100d2a-4a13-44f4-9c64-d6726968bfb5",
+  "taskName": "세션 회고 작성",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-29"
+},
+{
+  "id": "70809820-2bdc-4735-8cfa-20363c1b8b48",
+  "taskName": "주간 회고 작성",
+  "status": "Done",
+  "priority": "high",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-29"
+},
+{
+  "id": "acc3ff5f-5823-4997-a80c-5cd3ed2f4576",
+  "taskName": "맥북 구매",
+  "status": "InProgress",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "851f8dea-8f0f-41e2-a334-f96966008b98",
+  "taskName": "이력서 작성",
+  "status": "Todo",
+  "priority": "high",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "cf3bf89e-c4b3-41a6-95d2-a5787a6ec4b2",
+  "taskName": "물 2리터 마시기",
+  "status": "InProgress",
+  "priority": "low",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "44b4a4aa-11f2-4e76-98da-0338c6f02cd6",
+  "taskName": "제주 항공편 구매",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "13fcc14f-ca35-478e-8234-5b611a2a2de9",
+  "taskName": "영화 소개 웹 페이지 제작하기",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "944cf239-dfaa-44ff-9635-08cb0e24d20d",
+  "taskName": "프로젝트 피그마 시안 만들기",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "84147917-e3cc-41bf-bd08-92baef4e0c57",
+  "taskName": "컨퍼런스 등록하기",
+  "status": "Todo",
+  "priority": "high",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "14620c6e-baea-4a80-96df-8775256204f2",
+  "taskName": "코딩용 플레이리스트 만들기",
+  "status": "Todo",
+  "priority": "low",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-30"
+},
+{
+  "id": "4308c885-bdad-493e-8576-4611b5b030ba",
+  "taskName": "프로젝트 스크럼 정하기",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-31"
+},
+{
+  "id": "316adff8-4e91-46c3-83c5-c4f41425b9f3",
+  "taskName": "타입스크립트 강의 듣기",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-31"
+},
+{
+  "id": "06e864dc-3080-4c00-bc52-05811951eb85",
+  "taskName": "2주차 스터디 과제하기",
+  "status": "InProgress",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-31"
+},
+{
+  "id": "a02cd8c8-41a5-4ac4-bec1-3876ba31a3c8",
+  "taskName": "기술면접 클리닉 참여",
+  "status": "Done",
+  "priority": "high",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-31"
+},
+{
+  "id": "9ee3a5e1-5ccd-4b97-9345-eff28e274417",
+  "taskName": "수영장 등록하기",
+  "status": "Todo",
+  "priority": "low",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-08-31"
+},
+{
+  "id": "b5baf179-9822-43c4-88f9-bb4ae332ccd0",
+  "taskName": "자바스크립트 완벽 가이드 1회독",
+  "status": "Done",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-09-01"
+},
+{
+  "id": "79e1fe1b-8db8-410a-94d1-42a4e85e4ab2",
+  "taskName": "오픈소스 등록하기",
+  "status": "Todo",
+  "priority": "medium",
+  "createdAt": "2021-08-25",
+  "updatedAt": "2021-08-25",
+  "dueDate": "2021-09-01"
+}
+]
