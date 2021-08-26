@@ -10,16 +10,15 @@ export interface Itodo {
 }
 
 export interface ClickObj {
-  origin: boolean;
-  priority: boolean;
   deadline: boolean;
-  priorityTarget: string;
+  priority: PriorityType | null;
 }
 
 export interface MenuObj {
-  PRIORITY: string[];
+  PRIORITY: PriorityType[];
   FILTER: string[];
 }
 
+export type FilterReducer = 'PRIORITY' | 'DEADLINE' | 'INIT';
 export type PriorityType = '' | 'low' | 'medium' | 'high';
 export type StatusKey = 'Todo' | 'InProgress' | 'Done';

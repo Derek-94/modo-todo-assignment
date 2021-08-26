@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 import Button from '../common/Button';
 
+import { dateFormatString } from '../../utils/date';
 import { Itodo, PriorityType } from 'types';
 import uuidv4 from 'utils/getUuid';
 
@@ -12,6 +15,7 @@ interface TodoWrapperProps {
 const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
   const [inputTodo, setInputTodo] = useState<string>('');
   const [priority, setPriority] = useState<PriorityType>('');
+  const [dueDate, setDueDate] = useState<Date>(new Date());
   const [validationError, setValidationError] = useState<boolean>(false);
 
   const onChangeInput: React.ChangeEventHandler<HTMLInputElement> = e => {
@@ -34,6 +38,7 @@ const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
         taskName: inputTodo,
         status: 'Todo',
         priority: priority,
+        dueDate: dateFormatString(dueDate as Date),
       });
     }
   };
@@ -46,6 +51,11 @@ const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
           value={inputTodo}
           onChange={onChangeInput}
           placeholder="Input your todos..."
+        />
+        <TodoDatePick
+          selected={dueDate}
+          onChange={date => setDueDate(date as Date)}
+          placeholderText="Set due date..."
         />
         <Select defaultValue="default" required onChange={onChangePriority}>
           <option value="default" disabled>
@@ -81,8 +91,16 @@ const Input = styled.input`
   font-weight: ${({ theme }) => theme.layout.fontBold};
 `;
 
+const TodoDatePick = styled(DatePicker)`
+  padding: ${({ theme }) => theme.layout.padding};
+  background-color: ${({ theme }) => theme.color.whiteBackground};
+  margin-left: ${({ theme }) => theme.layout.formMargin};
+  border-radius: ${({ theme }) => theme.layout.radius};
+  cursor: pointer;
+`;
+
 const Select = styled.select`
-  margin: 10px 10px;
+  margin: ${({ theme }) => theme.layout.formMargin};
   padding: ${({ theme }) => theme.layout.padding};
   cursor: pointer;
   border-radius: ${({ theme }) => theme.layout.radius};

@@ -17,13 +17,34 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
   const handlerChange = (e: React.ChangeEvent<InputElement>) => {
     onFormChange(e);
   };
-
-  const handlerKeyDown = (e: React.KeyboardEvent<InputElement>) => {
+  const saveDate = () => {
+    setTodoState(prev =>
+      prev.map(state => {
+        if (state.id === todo.id) {
+          return {
+            ...state,
+            ...formData,
+          };
+        }
+        return state;
+      })
+    );
+    setIsUpdate(false);
+    setIsTitleUpdated(false);
+  };
+  const handlerInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
     if (e.code === 'Escape') {
-      setIsUpdate(false);
       setIsTitleUpdated(false);
-    } else if (e.code === 'Enter') {
+    }
+    if (e.code === 'Enter') {
+      saveDate();
+    }
+  };
+  const handlerTextareaKeyDown = (
+    e: React.KeyboardEvent<HTMLTextAreaElement>
+  ) => {
+    if (e.code === 'Enter' && e.ctrlKey) {
       setTodoState(prev =>
         prev.map(state => {
           if (state.id === todo.id) {
@@ -46,7 +67,7 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
           autoFocus
           name="taskName"
           value={formData.taskName || ''}
-          onKeyDown={handlerKeyDown}
+          onKeyDown={handlerInputKeyDown}
           onChange={handlerChange}
           onBlur={() => setIsTitleUpdated(false)}
         ></TitleEditor>
@@ -62,11 +83,11 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
       <TodoMemoContainer>
         {isUpdated ? (
           <MemoEditor
-            placeholder="Enter 를 이용하여 메모를 저장합니다"
+            placeholder="ctrl + Enter 를 이용하여 메모를 저장합니다"
             autoFocus
             name="memo"
             value={formData.memo || ''}
-            onKeyDown={handlerKeyDown}
+            onKeyDown={handlerTextareaKeyDown}
             onChange={handlerChange}
             onBlur={() => setIsTitleUpdated(false)}
           />
@@ -109,6 +130,7 @@ const TodoMemo = styled.div`
   width: 100%;
   height: 100%;
   border: 0.5px solid #aaaaaa;
+  white-space: pre-line;
 `;
 const MemoEditor = styled.textarea`
   width: 100%;
@@ -119,5 +141,6 @@ const TodoDate = styled.div`
 `;
 const TodoMemoContainer = styled.div`
   height: 150px;
+  line-height: 1.5;
 `;
 export default TodoDetail;
