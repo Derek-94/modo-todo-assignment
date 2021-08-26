@@ -63,7 +63,7 @@ const TodoFormWrapper = styled.div`
   padding-top: 80px;
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
 `;
 
 const MainContainer = styled.main`
