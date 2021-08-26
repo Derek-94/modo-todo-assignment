@@ -8,6 +8,7 @@ import DragProvider from 'contexts/DragContext';
 
 import { useFiltering } from 'components/Filtering/FilteringService';
 import FilteringContainer from 'components/Filtering/FilteringContainer';
+import SetTodo from 'components/Todo/SetTodo';
 
 const TodoList: React.FC = () => {
   const {
@@ -41,6 +42,7 @@ const TodoList: React.FC = () => {
           click={click}
         />
       </TodoFormWrapper>
+      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (

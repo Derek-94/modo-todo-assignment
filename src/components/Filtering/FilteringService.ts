@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
+import TODOS from 'constant/default.json';
 import { Itodo, ClickObj, PriorityType, FilterReducer } from 'types';
-import TODOS from 'constant/dummy.json';
 import { getStorage, setStorage } from 'utils/storage';
 
 interface FilteringData {
@@ -12,11 +12,9 @@ interface FilteringData {
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
 }
 
-const initialTodos: Itodo[] = TODOS as Itodo[];
-
 export const useFiltering = (): FilteringData => {
-  const [originalData] = useState<Itodo[]>(initialTodos);
-  const [todoState, setTodoState] = useState<Itodo[]>(initialTodos);
+  const [originalData] = useState<Itodo[]>([]);
+  const [todoState, setTodoState] = useState<Itodo[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [click, setClick] = useState<ClickObj>({
     deadline: false,
@@ -24,11 +22,13 @@ export const useFiltering = (): FilteringData => {
   });
 
   useEffect(() => {
-    // setStorage('todos', TODOS);
-    // const getData = getStorage('todos') || [];
-    // setOriginalData(getData);
-    // setTodoState(getData);
+    const getData = (getStorage('modu_todos') || TODOS) as Itodo[];
+    setTodoState(getData);
   }, []);
+
+  useEffect(() => {
+    setStorage('modu_todos', todoState);
+  }, [todoState]);
 
   useEffect(() => {
     setDropdownOpen(!open);
