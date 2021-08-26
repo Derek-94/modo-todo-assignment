@@ -3,14 +3,16 @@ import styled, { css } from 'styled-components';
 import { Itodo } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
 import { useDragDispatch, useDragState } from 'contexts';
-
+import ModalDetail from './TodoDetail';
+import useModal from 'hooks/useModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import Modal from 'components/common/Modal';
 
 interface TodoProps {
   todo: Itodo;
   todos: Itodo[];
-  setTodoState: (todos: Itodo[]) => void;
+  setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   onDeleteTodo: (id: string) => void;
 }
 
@@ -20,6 +22,7 @@ const Todo: React.FC<TodoProps> = ({
   setTodoState,
   onDeleteTodo,
 }) => {
+  const { isModalOpen, toggleModal } = useModal();
   const dispatch = useDragDispatch();
   const { position, hover } = useDragState();
   const todoRef = useRef<HTMLDivElement>(null);
@@ -64,24 +67,31 @@ const Todo: React.FC<TodoProps> = ({
   const onClickIcon: React.MouseEventHandler<SVGSVGElement> = () => {
     onDeleteTodo(todo.id);
   };
-
   return (
-    <TodoContainer
-      ref={todoRef}
-      draggable
-      data-id={todo.id}
-      onDragStart={handleDragStart}
-      onDragOver={handlerDragOver}
-      onDragEnd={handleDragEnd}
-      onDrop={handleDrop}
-      focus={hover === todo.id}
-      position={position}
-    >
-      <TodoContent>
-        {todo.taskName}
-        <Icon icon={faTrashAlt} onClick={onClickIcon} />
-      </TodoContent>
-    </TodoContainer>
+    <>
+      <TodoContainer
+        ref={todoRef}
+        draggable
+        data-id={todo.id}
+        onDragStart={handleDragStart}
+        onDragOver={handlerDragOver}
+        onDragEnd={handleDragEnd}
+        onDrop={handleDrop}
+        focus={hover === todo.id}
+        position={position}
+        onClick={toggleModal}
+      >
+        <TodoContent>
+          {todo.taskName}
+          <Icon icon={faTrashAlt} onClick={onClickIcon} />
+        </TodoContent>
+      </TodoContainer>
+      {isModalOpen && (
+        <Modal toggle={toggleModal}>
+          <ModalDetail setTodoState={setTodoState} todo={todo} />
+        </Modal>
+      )}
+    </>
   );
 };
 

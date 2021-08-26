@@ -9,7 +9,7 @@ interface ColumnProps {
   status: StatusKey;
   todos: Itodo[];
   filtered: Itodo[];
-  setTodoState: (todos: Itodo[]) => void;
+  setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   onDeleteTodo: (id: string) => void;
 }
 
