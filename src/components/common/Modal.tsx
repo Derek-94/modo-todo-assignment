@@ -62,13 +62,13 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
 const setSize = (props: Partial<ModalProps>) => {
   if (props.Small) {
     return css`
-      min-height: 100px;
       min-width: 300px;
+      max-width: 400px;
     `;
   }
   return css`
-    min-height: 300px;
     min-width: 400px;
+    max-width: 500px;
   `;
 };
 const ModalWrap = styled.div<Partial<ModalProps>>`
@@ -87,25 +87,24 @@ const ModalWrap = styled.div<Partial<ModalProps>>`
 const Container = styled.div<Partial<ModalProps>>`
   position: relative;
   box-shadow: 5px 5px 30px rgba(200, 200, 200, 0.2);
-  background-color: white;
-  border-radius: 10px;
+  background-color: ${({ theme }) => theme.color.whiteBackground};
+  border-radius: ${({ theme }) => theme.layout.radius};
   z-index: 10;
   ${props => setSize(props)};
 `;
 
 const Content = styled.div`
-  padding: 24px;
+  padding: ${({ theme }) => theme.layout.padding};
 `;
 
 const Title = styled.h1`
-  padding: 20px;
-  border-bottom: 1px solid #a3a5b9;
+  padding: ${({ theme }) => theme.layout.padding};
+  border-bottom: 1px solid ${({ theme }) => theme.color.borderline};
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
+  float: right;
+  margin: 0 20px 20px 0;
 `;
 
 const OutLayer = styled.div`
