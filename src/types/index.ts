@@ -19,5 +19,5 @@ export interface MenuObj {
 }
 
 export type FilterReducer = 'PRIORITY' | 'DEADLINE' | 'INIT';
-export type PriorityType = 'low' | 'medium' | 'high';
+export type PriorityType = '' | 'low' | 'medium' | 'high';
 export type StatusKey = 'Todo' | 'InProgress' | 'Done';

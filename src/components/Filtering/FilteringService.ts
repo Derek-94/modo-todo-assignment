@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Itodo, ClickObj, PriorityType, FilterReducer } from 'types';
-import { TODOS } from 'constant';
+import TODOS from 'constant/dummy.json';
 import { getStorage, setStorage } from 'utils/storage';
 
 interface FilteringData {
@@ -12,7 +12,7 @@ interface FilteringData {
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
 }
 
-const initialTodos: Itodo[] = TODOS;
+const initialTodos: Itodo[] = TODOS as Itodo[];
 
 export const useFiltering = (): FilteringData => {
   const [originalData] = useState<Itodo[]>(initialTodos);
@@ -91,10 +91,10 @@ export const useFiltering = (): FilteringData => {
 
   return {
     todoState,
+    setTodoState,
     handlerFiltering,
     handlerDropdown,
     dropdownOpen,
     click,
-    setTodoState,
   };
 };

@@ -2,6 +2,7 @@ export const theme = {
   color: {
     green: '#4BBF6B',
     darkGreen: '#40A35B',
+    red: 'crimson',
     whiteBackground: '#F5F5F5',
     columnBackground: '#DFDFDF',
     borderline: '#B6AFAF',

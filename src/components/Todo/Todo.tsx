@@ -4,13 +4,22 @@ import { Itodo } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
 import { useDragDispatch, useDragState } from 'contexts';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 interface TodoProps {
   todo: Itodo;
   todos: Itodo[];
   setTodoState: (todos: Itodo[]) => void;
+  onDeleteTodo: (id: string) => void;
 }
 
-const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
+const Todo: React.FC<TodoProps> = ({
+  todo,
+  todos,
+  setTodoState,
+  onDeleteTodo,
+}) => {
   const dispatch = useDragDispatch();
   const { position, hover } = useDragState();
   const todoRef = useRef<HTMLDivElement>(null);
@@ -52,6 +61,10 @@ const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
     }
   };
 
+  const onClickIcon: React.MouseEventHandler<SVGSVGElement> = () => {
+    onDeleteTodo(todo.id);
+  };
+
   return (
     <TodoContainer
       ref={todoRef}
@@ -65,7 +78,8 @@ const Todo: React.FC<TodoProps> = ({ todo, todos, setTodoState }) => {
       position={position}
     >
       <TodoContent>
-        {todo.taskName} | {todo.id}
+        {todo.taskName}
+        <Icon icon={faTrashAlt} onClick={onClickIcon} />
       </TodoContent>
     </TodoContainer>
   );
@@ -99,14 +113,25 @@ const TodoContainer = styled.div<StyledTodoProps>`
   ${props => marginByPosition(props)};
   background-color: rgba(0, 0, 0, 0);
 `;
+
 const TodoContent = styled.div`
   box-shadow: ${({ theme }) => theme.layout.dropShadow};
   color: ${({ theme }) => theme.color.todoFont};
   border-radius: ${({ theme }) => theme.layout.radius};
   background-color: ${({ theme }) => theme.color.whiteBackground};
-  padding: 30px;
-  border: 1px solid black;
-  border-radius: 10px;
+  padding: ${({ theme }) => theme.layout.listPadding};
+  border: 1px solid ${({ theme }) => theme.color.borderline};
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  :hover {
+    color: ${({ theme }) => theme.color.green};
+    transform: scale(1.1);
+    transition: all 0.5s;
+  }
 `;
 
 export default React.memo(Todo);

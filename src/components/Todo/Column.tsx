@@ -10,6 +10,7 @@ interface ColumnProps {
   todos: Itodo[];
   filtered: Itodo[];
   setTodoState: (todos: Itodo[]) => void;
+  onDeleteTodo: (id: string) => void;
 }
 
 const Column: React.FC<ColumnProps> = ({
@@ -17,6 +18,7 @@ const Column: React.FC<ColumnProps> = ({
   todos,
   filtered,
   setTodoState,
+  onDeleteTodo,
 }) => {
   const dispatch = useDragDispatch();
   const handlerDragOver = (e: React.DragEvent<HTMLDivElement>): void => {
@@ -48,6 +50,7 @@ const Column: React.FC<ColumnProps> = ({
             todos={todos}
             key={todo.id}
             todo={todo}
+            onDeleteTodo={onDeleteTodo}
           />
         ))}
       </Todos>
@@ -59,12 +62,10 @@ const ColumnContatiner = styled.div`
   box-sizing: border-box;
   min-width: 300px;
   width: 30%;
-  margin-top: 120px;
   padding: ${({ theme }) => theme.layout.padding};
   color: ${({ theme }) => theme.color.todoFont};
   border-radius: ${({ theme }) => theme.layout.radius};
   background-color: ${({ theme }) => theme.color.columnBackground};
-
   > h2 {
     font-size: ${({ theme }) => theme.layout.subTitleSize};
     font-weight: ${({ theme }) => theme.layout.fontBold};
@@ -73,8 +74,8 @@ const ColumnContatiner = styled.div`
 `;
 
 const Todos = styled.div`
-  height: 100%;
   margin-top: ${({ theme }) => theme.layout.gap};
+  height: 100%;
 `;
 
 export default Column;
