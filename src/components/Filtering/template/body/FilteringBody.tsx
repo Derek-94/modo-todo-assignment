@@ -45,7 +45,7 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
         />
       </Btn>
       <Btn onClick={handlerDropdown} title="중요도">
-        <Icon icon={faListOl} select={filterOpt.priority ? true : false} />
+        <Icon icon={faListOl} select={`${filterOpt.priority !== null}`} />
         <PriorityLow checkPriority={filterOpt.priority || ''}></PriorityLow>
         <PriorityHigh checkPriority={filterOpt.priority || ''}></PriorityHigh>
         <PriorityMidTop
@@ -61,7 +61,7 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
             onClick={() => handlerFiltering('PRIORITY', priority)}
             key={idx}
           >
-            {priority}
+            {MENU.KOR[idx]}
           </span>
         ))}
       </DropMenu>

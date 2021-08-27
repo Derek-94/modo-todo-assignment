@@ -12,6 +12,7 @@ import SetTodo from 'components/Todo/SetTodo';
 
 const TodoList: React.FC = () => {
   const {
+    todoState,
     filterTodo,
     setTodoState,
     handlerFiltering,
@@ -50,7 +51,7 @@ const TodoList: React.FC = () => {
       {validationError && (
         <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
       )}
-      <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} />
+      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
