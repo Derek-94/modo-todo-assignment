@@ -10,10 +10,11 @@ interface FilteringData {
   dropdownOpen: boolean;
   click: ClickObj;
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
+  setOriginalData: React.Dispatch<React.SetStateAction<Itodo[]>>;
 }
 
 export const useFiltering = (): FilteringData => {
-  const [originalData] = useState<Itodo[]>([]);
+  const [originalData, setOriginalData] = useState<Itodo[]>([]);
   const [todoState, setTodoState] = useState<Itodo[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [click, setClick] = useState<ClickObj>({
@@ -23,8 +24,12 @@ export const useFiltering = (): FilteringData => {
 
   useEffect(() => {
     const getData = (getStorage('modu_todos') || TODOS) as Itodo[];
-    setTodoState(getData);
+    setOriginalData(getData);
   }, []);
+
+  useEffect(() => {
+    setTodoState(originalData);
+  }, [originalData]);
 
   useEffect(() => {
     setStorage('modu_todos', todoState);
@@ -94,6 +99,7 @@ export const useFiltering = (): FilteringData => {
     setTodoState,
     handlerFiltering,
     handlerDropdown,
+    setOriginalData,
     dropdownOpen,
     click,
   };

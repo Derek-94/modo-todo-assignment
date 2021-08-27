@@ -18,6 +18,7 @@ const TodoList: React.FC = () => {
     click,
     todoState,
     setTodoState,
+    setOriginalData,
   } = useFiltering();
 
   const filterList = (status: StatusKey) =>
@@ -42,7 +43,11 @@ const TodoList: React.FC = () => {
           click={click}
         />
       </TodoFormWrapper>
-      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
+      <SetTodo
+        todoLength={todoState.length}
+        setDefaultTodos={setOriginalData}
+        setTodos={setTodoState}
+      />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
