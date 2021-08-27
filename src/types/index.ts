@@ -17,6 +17,7 @@ export interface ClickObj {
 export interface MenuObj {
   PRIORITY: PriorityType[];
   FILTER: string[];
+  KOR: string[];
 }
 
 export type FilterReducer = 'PRIORITY' | 'DEADLINE' | 'INIT';

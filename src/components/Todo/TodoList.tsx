@@ -12,6 +12,7 @@ import SetTodo from 'components/Todo/SetTodo';
 
 const TodoList: React.FC = () => {
   const {
+    todoState,
     filterTodo,
     setTodoState,
     handlerFiltering,
@@ -42,7 +43,8 @@ const TodoList: React.FC = () => {
           filterOpt={filterOpt}
         />
       </TodoFormWrapper>
-      <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} />
+      {/* <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} /> */}
+      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (

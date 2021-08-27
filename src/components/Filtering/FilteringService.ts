@@ -5,6 +5,7 @@ import { getStorage, setStorage } from 'utils/storage';
 import { currentDate } from 'utils/date';
 
 interface FilteringData {
+  todoState: Itodo[];
   filterTodo: Itodo[];
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
   handlerDropdown: () => void;
@@ -90,6 +91,7 @@ export const useFiltering = (): FilteringData => {
   };
 
   return {
+    todoState,
     filterTodo,
     setTodoState,
     handlerFiltering,
