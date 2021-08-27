@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const GlobalStyles = createGlobalStyle<{ theme: any }>` 
   ${reset}
 

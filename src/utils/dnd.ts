@@ -9,6 +9,7 @@ export const isOverHalf = (e: React.DragEvent<HTMLElement>): boolean => {
   return overPercent > THRESHOLD;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const findById = (arr: any[], targetId: string): number => {
   return arr.findIndex(todo => todo.id === targetId);
 };
