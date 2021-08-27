@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Todo from './Todo';
-import { Itodo, StatusKey, PriorityType } from 'types';
+import Todo from 'components/Todo/Todo';
+import { Itodo, StatusKey } from 'types';
 import { findById, mergeArray } from 'utils/dnd';
-import { useDragDispatch } from 'contexts';
+import { useDragDispatch } from 'contexts/DragContext';
+import { dateFormatString } from 'utils/date';
 
 interface ColumnProps {
   status: StatusKey;
@@ -32,6 +33,7 @@ const Column: React.FC<ColumnProps> = ({
     const newTodo = {
       ...todos[from],
       status: status,
+      updatedAt: dateFormatString(new Date()),
     };
 
     const newTodos = mergeArray(todos, from, todos.length, newTodo);
@@ -64,6 +66,7 @@ const Column: React.FC<ColumnProps> = ({
 const ColumnContatiner = styled.div`
   box-sizing: border-box;
   min-width: 300px;
+  min-height: 60vh;
   width: 30%;
   padding: ${({ theme }) => theme.layout.padding};
   color: ${({ theme }) => theme.color.todoFont};

@@ -24,6 +24,7 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
       toggle();
     }
   };
+
   useEffect(() => {
     window.addEventListener('keydown', escapeEvent);
     return () => {

@@ -1,24 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Button from '../common/Button';
-import { dateFormatString } from '../../utils/date';
+import Button from 'components/common/Button';
 import { Itodo, PriorityType } from 'types';
+import { dateFormatString } from 'utils/date';
 import uuidv4 from 'utils/getUuid';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface TodoWrapperProps {
   onAddTodo: (newTodo: Itodo) => void;
-  onValidationCheck: (validCheck: boolean) => void;
 }
 
-const TodoForm: React.FC<TodoWrapperProps> = ({
-  onAddTodo,
-  onValidationCheck,
-}) => {
+const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
+  const [validationError, setValidationError] = useState<boolean>(false);
   const [inputTodo, setInputTodo] = useState<string>('');
   const [priority, setPriority] = useState<PriorityType>('');
   const [dueDate, setDueDate] = useState<Date>(new Date());
+
+  useEffect(() => {
+    if (validationError) {
+      setTimeout(() => {
+        setValidationError(false);
+      }, 2000);
+    }
+  }, [validationError]);
 
   const onChangeInput: React.ChangeEventHandler<HTMLInputElement> = e => {
     setInputTodo(e.currentTarget.value);
@@ -40,9 +45,14 @@ const TodoForm: React.FC<TodoWrapperProps> = ({
         taskName: inputTodo,
         status: 'Todo',
         priority: priority,
+        createdAt: dateFormatString(new Date()),
         dueDate: dateFormatString(dueDate as Date),
       });
     }
+  };
+
+  const onValidationCheck = (validCheck: boolean) => {
+    setValidationError(validCheck);
   };
 
   return (
@@ -70,6 +80,11 @@ const TodoForm: React.FC<TodoWrapperProps> = ({
         <Button Large onClick={onRegisterTodo}>
           등록
         </Button>
+        {validationError && (
+          <ErrorMessage>
+            위 항목 중 선택하지 않은 것이 있습니다. 😥
+          </ErrorMessage>
+        )}
       </Form>
     </>
   );
@@ -80,6 +95,7 @@ const Form = styled.form`
   justify-content: center;
   align-items: center;
   padding-top: 80px;
+  position: relative;
 `;
 
 const Input = styled.input`
@@ -106,12 +122,15 @@ const Select = styled.select`
 `;
 
 const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.headerFont};
   display: flex;
   justify-content: center;
   margin: 10px;
   font-weight: ${({ theme }) => theme.layout.fontBold};
   font-size: 18px;
+  position: absolute;
+  bottom: -30px;
+  text-align: center;
 `;
 
 export default TodoForm;

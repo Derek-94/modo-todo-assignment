@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Column from './Column';
 import TodoForm from './TodoForm';
 import FilteringContainer from 'components/Filtering/FilteringContainer';
 import SetTodo from 'components/Todo/SetTodo';
 import DragProvider from 'contexts/DragContext';
-import { useFiltering } from 'components/Filtering/FilteringService';
+import { useTodoService } from 'components/TodoService';
 import { STATUS } from 'constant';
 import { Itodo, StatusKey } from 'types';
 
 const TodoList: React.FC = () => {
-  const {
-    todoState,
-    filterTodo,
-    setTodoState,
-    handlerFiltering,
-    handlerDropdown,
-    dropdownOpen,
-    filterOpt,
-  } = useFiltering();
-  const [validationError, setValidationError] = useState<boolean>(false);
+  const { filterTodo, setTodoState, handlerFiltering, filterOpt } =
+    useTodoService();
 
   const filterList = (status: StatusKey) =>
     filterTodo.filter(todo => todo.status === status);
@@ -32,25 +24,18 @@ const TodoList: React.FC = () => {
     setTodoState(todoState => todoState.filter(todo => todo.id !== id));
   };
 
-  const onValidationCheck = (validCheck: boolean) => {
-    setValidationError(validCheck);
-  };
-
   return (
     <>
       <TodoFormWrapper>
-        <TodoForm onAddTodo={onAddTodo} onValidationCheck={onValidationCheck} />
+        <TodoForm onAddTodo={onAddTodo} />
+      </TodoFormWrapper>
+      <TodoNavigation>
         <FilteringContainer
           handlerFiltering={handlerFiltering}
-          handlerDropdown={handlerDropdown}
-          dropdownOpen={dropdownOpen}
           filterOpt={filterOpt}
         />
-      </TodoFormWrapper>
-      {validationError && (
-        <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
-      )}
-      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
+        <SetTodo setTodoState={setTodoState} />
+      </TodoNavigation>
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
@@ -68,18 +53,14 @@ const TodoList: React.FC = () => {
     </>
   );
 };
-
-const ErrorMessage = styled.p`
-  color: ${({ theme }) => theme.color.red};
+const TodoNavigation = styled.div`
+  margin-top: ${({ theme }) => theme.layout.gap};
   display: flex;
-  justify-content: center;
-  margin: 6px;
-  font-weight: ${({ theme }) => theme.layout.fontBold};
-  font-size: 18px;
+  justify-content: space-between;
+  align-items: center;
 `;
-
 const TodoFormWrapper = styled.div`
-  padding-top: 80px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;

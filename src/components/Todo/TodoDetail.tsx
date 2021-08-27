@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Label from 'components/common/Label';
 import useForm from 'hooks/useForm';
 import { Itodo, PriorityType } from 'types';
+import { dateFormatString } from 'utils/date';
 
 interface DetailProps {
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
@@ -24,7 +25,6 @@ const TodoDetail: React.FC<DetailProps> = ({
   const handlerChange = (e: React.ChangeEvent<InputElement>) => {
     onFormChange(e);
   };
-
   const saveDate = () => {
     setTodoState(prev =>
       prev.map(state => {
@@ -32,6 +32,7 @@ const TodoDetail: React.FC<DetailProps> = ({
           return {
             ...state,
             ...formData,
+            updatedAt: dateFormatString(new Date()),
           };
         }
         return state;
@@ -79,7 +80,7 @@ const TodoDetail: React.FC<DetailProps> = ({
       )}
       <TodoDate>
         <p>생성일 : {todo.createdAt}</p>
-        <p>수정일 : {todo.updatedAt}</p>
+        {todo.createdAt !== todo.updatedAt && <p>수정일 : {todo.updatedAt}</p>}
       </TodoDate>
       <TodoMemoContainer>
         {memoUpdate ? (
@@ -98,6 +99,7 @@ const TodoDetail: React.FC<DetailProps> = ({
               <MemoPlaceholder>
                 <p>메모가 없습니다</p>
                 <p>더블클릭하여 메모를 남기거나 수정할 수 있습니다</p>
+                <p>제목도 더블클릭하여 수정할 수 있습니다</p>
               </MemoPlaceholder>
             )}
           </TodoMemo>

@@ -29,7 +29,7 @@
   "id": "523f4136-9044-443e-935a-1baab747ab2c",
   "taskName": "리드미 작성",
   "status": "Todo",
-  "priority": "medium",
+  "priority": "low",
   "createdAt": "2021-08-24",
   "updatedAt": "2021-08-24",
   "dueDate": "2021-08-27"
@@ -56,7 +56,7 @@
   "id": "ebcfbe46-0222-4f70-a14f-ff55e1dd6228",
   "taskName": "캐치마인드",
   "status": "InProgress",
-  "priority": "medium",
+  "priority": "low",
   "createdAt": "2021-08-24",
   "updatedAt": "2021-08-24",
   "dueDate": "2021-08-27"
