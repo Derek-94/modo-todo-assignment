@@ -51,6 +51,18 @@
 
 ---
 
+## 설치 및 실행 방법
+```
+// 레포지토리 클론
+git clone https://github.com/Derek-94/modu-todo-assignment.git
+// 디렉토리 변경
+cd modu-todo-assignment
+// 종속성 설치
+npm install
+// 실행
+npm start
+```
+
 ## 📚 기술 스택
 
 ![image](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
