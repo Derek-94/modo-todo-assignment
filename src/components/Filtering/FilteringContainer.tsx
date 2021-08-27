@@ -8,14 +8,14 @@ interface FilteringContainerProps {
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
   handlerDropdown: () => void;
   dropdownOpen: boolean;
-  click: ClickObj;
+  filterOpt: ClickObj;
 }
 
 const FilteringContainer: React.FC<FilteringContainerProps> = ({
   handlerFiltering,
   handlerDropdown,
   dropdownOpen,
-  click,
+  filterOpt,
 }) => {
   return (
     <FilteringWrapper>
@@ -24,7 +24,7 @@ const FilteringContainer: React.FC<FilteringContainerProps> = ({
         handlerFiltering={handlerFiltering}
         handlerDropdown={handlerDropdown}
         dropdownOpen={dropdownOpen}
-        click={click}
+        filterOpt={filterOpt}
       />
     </FilteringWrapper>
   );

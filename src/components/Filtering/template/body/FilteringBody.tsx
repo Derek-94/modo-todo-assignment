@@ -14,14 +14,14 @@ interface FilteringBodyProps {
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
   handlerDropdown: () => void;
   dropdownOpen: boolean;
-  click: ClickObj;
+  filterOpt: ClickObj;
 }
 
 const FilteringBody: React.FC<FilteringBodyProps> = ({
   handlerFiltering,
   handlerDropdown,
   dropdownOpen,
-  click,
+  filterOpt,
 }) => {
   const handlerOrigin = () => {
     handlerFiltering('INIT');
@@ -33,17 +33,27 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
   return (
     <FilteringBodyBlock>
       <Btn onClick={handlerOrigin} title="초기화">
-        <Icon icon={faClipboard} check={!click.deadline && !click.priority} />
+        <Icon
+          icon={faClipboard}
+          select={`${!filterOpt.deadline && !filterOpt.priority}`}
+        />
       </Btn>
       <Btn onClick={handlerDeadline} title="마감임박">
-        <Icon icon={faExclamationCircle} check={click.deadline} />
+        <Icon
+          icon={faExclamationCircle}
+          select={filterOpt.deadline.toString()}
+        />
       </Btn>
       <Btn onClick={handlerDropdown} title="중요도">
-        <Icon icon={faListOl} check={click.priority ? true : false} />
-        <PriorityLow checkPriority={click.priority || ''}></PriorityLow>
-        <PriorityHigh checkPriority={click.priority || ''}></PriorityHigh>
-        <PriorityMidTop checkPriority={click.priority || ''}></PriorityMidTop>
-        <PriorityMidBot checkPriority={click.priority || ''}></PriorityMidBot>
+        <Icon icon={faListOl} select={filterOpt.priority ? true : false} />
+        <PriorityLow checkPriority={filterOpt.priority || ''}></PriorityLow>
+        <PriorityHigh checkPriority={filterOpt.priority || ''}></PriorityHigh>
+        <PriorityMidTop
+          checkPriority={filterOpt.priority || ''}
+        ></PriorityMidTop>
+        <PriorityMidBot
+          checkPriority={filterOpt.priority || ''}
+        ></PriorityMidBot>
       </Btn>
       <DropMenu checkDropdown={dropdownOpen}>
         {MENU.PRIORITY.map((priority, idx) => (
@@ -101,10 +111,10 @@ const DropMenu = styled.div<{ checkDropdown: boolean }>`
   }
 `;
 
-const Icon = styled(FontAwesomeIcon)<{ check: boolean }>`
+const Icon = styled(FontAwesomeIcon)<{ select: boolean | string }>`
   cursor: pointer;
   font-size: 25px;
-  color: ${props => (props.check ? '#dd346c' : '#dfdfdf')};
+  color: ${props => (props.select === 'true' ? '#dd346c' : '#dfdfdf')};
 `;
 
 const PriorityProp = (margin: number, height: number, target: string) => css<{

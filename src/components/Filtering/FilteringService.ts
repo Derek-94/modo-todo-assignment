@@ -2,34 +2,30 @@ import { useState, useEffect } from 'react';
 import TODOS from 'constant/default.json';
 import { Itodo, ClickObj, PriorityType, FilterReducer } from 'types';
 import { getStorage, setStorage } from 'utils/storage';
+import { currentDate } from 'utils/date';
 
 interface FilteringData {
-  todoState: Itodo[];
+  filterTodo: Itodo[];
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
   handlerDropdown: () => void;
   dropdownOpen: boolean;
-  click: ClickObj;
+  filterOpt: ClickObj;
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
-  setOriginalData: React.Dispatch<React.SetStateAction<Itodo[]>>;
 }
 
 export const useFiltering = (): FilteringData => {
-  const [originalData, setOriginalData] = useState<Itodo[]>([]);
   const [todoState, setTodoState] = useState<Itodo[]>([]);
+  const [filterTodo, setFilterTodo] = useState<Itodo[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [click, setClick] = useState<ClickObj>({
+  const [filterOpt, setFilterOpt] = useState<ClickObj>({
     deadline: false,
     priority: null,
   });
 
   useEffect(() => {
     const getData = (getStorage('modu_todos') || TODOS) as Itodo[];
-    setOriginalData(getData);
+    setTodoState(getData);
   }, []);
-
-  useEffect(() => {
-    setTodoState(originalData);
-  }, [originalData]);
 
   useEffect(() => {
     setStorage('modu_todos', todoState);
@@ -37,10 +33,10 @@ export const useFiltering = (): FilteringData => {
 
   useEffect(() => {
     setDropdownOpen(!open);
-    const filteredByPrioriry = filterByPriority(originalData, click.priority);
+    const filteredByPrioriry = filterByPriority(todoState, filterOpt.priority);
     const filteredByDeadLine = filterByDeadline(filteredByPrioriry);
-    setTodoState(filteredByDeadLine);
-  }, [click]);
+    setFilterTodo(filteredByDeadLine);
+  }, [todoState, filterOpt]);
 
   const filterByPriority = (todos: Itodo[], priority: PriorityType | null) => {
     if (priority) {
@@ -50,15 +46,14 @@ export const useFiltering = (): FilteringData => {
   };
 
   const deadlineFilter = (todo: Itodo) => {
-    // 60 * 60 * 24 * 1000 = 86400000 (1 day)
-    const currentDay = new Date(new Date().setHours(0, 0, 0, 0));
+    const currentDay = currentDate();
     const dueDate = new Date(todo.dueDate || '').setHours(0, 0, 0, 0);
     const deadLine = dueDate - currentDay.getTime();
     return deadLine <= 172800000 && deadLine >= -172800000;
   };
 
   const filterByDeadline = (todos: Itodo[]) => {
-    if (click.deadline) {
+    if (filterOpt.deadline) {
       return todos.filter(deadlineFilter);
     }
     return todos;
@@ -79,15 +74,15 @@ export const useFiltering = (): FilteringData => {
   };
 
   const handlerPriorityState = (target: PriorityType | null) => {
-    setClick({ ...click, priority: target });
+    setFilterOpt({ ...filterOpt, priority: target });
   };
 
   const handlerDeadlineState = () => {
-    setClick({ ...click, deadline: !click.deadline });
+    setFilterOpt({ ...filterOpt, deadline: !filterOpt.deadline });
   };
 
   const handlerResetState = () => {
-    setClick({ deadline: false, priority: null });
+    setFilterOpt({ deadline: false, priority: null });
   };
 
   const handlerDropdown = (): void => {
@@ -95,12 +90,11 @@ export const useFiltering = (): FilteringData => {
   };
 
   return {
-    todoState,
+    filterTodo,
     setTodoState,
     handlerFiltering,
     handlerDropdown,
-    setOriginalData,
     dropdownOpen,
-    click,
+    filterOpt,
   };
 };

@@ -12,24 +12,23 @@ import SetTodo from 'components/Todo/SetTodo';
 
 const TodoList: React.FC = () => {
   const {
+    filterTodo,
+    setTodoState,
     handlerFiltering,
     handlerDropdown,
     dropdownOpen,
-    click,
-    todoState,
-    setTodoState,
-    setOriginalData,
+    filterOpt,
   } = useFiltering();
 
   const filterList = (status: StatusKey) =>
-    todoState.filter(todo => todo.status === status);
+    filterTodo.filter(todo => todo.status === status);
 
   const onDeleteTodo = (id: string) => {
-    setTodoState(todoState.filter(todo => todo.id !== id));
+    setTodoState(todoState => todoState.filter(todo => todo.id !== id));
   };
 
   const onAddTodo = (newTodo: Itodo) => {
-    setTodoState([...todoState, newTodo]);
+    setTodoState(prevState => [...prevState, newTodo]);
   };
 
   return (
@@ -40,14 +39,10 @@ const TodoList: React.FC = () => {
           handlerFiltering={handlerFiltering}
           handlerDropdown={handlerDropdown}
           dropdownOpen={dropdownOpen}
-          click={click}
+          filterOpt={filterOpt}
         />
       </TodoFormWrapper>
-      <SetTodo
-        todoLength={todoState.length}
-        setDefaultTodos={setOriginalData}
-        setTodos={setTodoState}
-      />
+      <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
@@ -55,7 +50,7 @@ const TodoList: React.FC = () => {
               key={i}
               status={status}
               filtered={filterList(status)}
-              todos={todoState}
+              todos={filterTodo}
               setTodoState={setTodoState}
               onDeleteTodo={onDeleteTodo}
             />
