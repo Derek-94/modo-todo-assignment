@@ -1,24 +1,20 @@
 import { useState, useEffect } from 'react';
 import TODOS from 'constant/default.json';
-import { Itodo, ClickObj, PriorityType, FilterReducer } from 'types';
+import { Itodo, FilterOption, PriorityType, FilterReducer } from 'types';
 import { getStorage, setStorage } from 'utils/storage';
 import { currentDate } from 'utils/date';
 
-interface FilteringData {
-  todoState: Itodo[];
+interface TodoServiceData {
   filterTodo: Itodo[];
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;
-  handlerDropdown: () => void;
-  dropdownOpen: boolean;
-  filterOpt: ClickObj;
+  filterOpt: FilterOption;
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
 }
 
-export const useFiltering = (): FilteringData => {
+export const useTodoService = (): TodoServiceData => {
   const [todoState, setTodoState] = useState<Itodo[]>([]);
   const [filterTodo, setFilterTodo] = useState<Itodo[]>([]);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [filterOpt, setFilterOpt] = useState<ClickObj>({
+  const [filterOpt, setFilterOpt] = useState<FilterOption>({
     deadline: false,
     priority: null,
   });
@@ -33,7 +29,6 @@ export const useFiltering = (): FilteringData => {
   }, [todoState]);
 
   useEffect(() => {
-    setDropdownOpen(!open);
     const filteredByPrioriry = filterByPriority(todoState, filterOpt.priority);
     const filteredByDeadLine = filterByDeadline(filteredByPrioriry);
     setFilterTodo(filteredByDeadLine);
@@ -50,7 +45,7 @@ export const useFiltering = (): FilteringData => {
     const currentDay = currentDate();
     const dueDate = new Date(todo.dueDate || '').setHours(0, 0, 0, 0);
     const deadLine = dueDate - currentDay.getTime();
-    return deadLine <= 172800000 && deadLine >= -172800000;
+    return deadLine <= 172800000 && deadLine >= 0;
   };
 
   const filterByDeadline = (todos: Itodo[]) => {
@@ -86,17 +81,10 @@ export const useFiltering = (): FilteringData => {
     setFilterOpt({ deadline: false, priority: null });
   };
 
-  const handlerDropdown = (): void => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
   return {
-    todoState,
     filterTodo,
     setTodoState,
     handlerFiltering,
-    handlerDropdown,
-    dropdownOpen,
     filterOpt,
   };
 };

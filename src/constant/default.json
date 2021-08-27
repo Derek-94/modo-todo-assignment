@@ -17,15 +17,6 @@
   "dueDate": "2021-08-26"
 },
 {
-  "id" : "ec2358c1-1c55-4e49-bf7f-d9015200bf39",
-  "taskName": "위쪽 버튼으로 테스트↑ ",
-  "status": "Done",
-  "priority": "medium",
-  "createdAt": "2021-08-24",
-  "updatedAt": "2021-08-24",
-  "dueDate": "2021-08-26"
-},
-{
   "id": "972106c8-5929-4294-8acc-cc99473dff5a",
   "taskName": "완료된 일",
   "status": "Done",
@@ -35,12 +26,22 @@
   "dueDate": "2021-08-26"
 },
 {
-  "id": "8ac55722-afab-468c-838d-07a4895d7349",
-  "taskName": "나중을 위하여",
-  "status": "Todo",
-  "priority": "medium",
+  "id" : "ec2358c1-1c55-4e49-bf7f-d9015200bf39",
+  "taskName": "더미데이터를 이용하여 테스트할 수 있습니다",
+  "status": "Done",
+  "priority": "low",
   "createdAt": "2021-08-24",
   "updatedAt": "2021-08-24",
   "dueDate": "2021-08-26"
+},
+{
+  "id": "8ac55722-afab-468c-838d-07a4895d7349",
+  "taskName": "사용법 클릭하세요",
+  "status": "Todo",
+  "priority": "low",
+  "createdAt": "2021-08-24",
+  "updatedAt": "2021-08-24",
+  "dueDate": "2021-08-26",
+  "memo" : "여기에는 메모를 적어주세요\n ctrl + enter 를 이용하여 메모를 저장할 수 있습니다"
 }
 ]

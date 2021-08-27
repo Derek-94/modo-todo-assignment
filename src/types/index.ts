@@ -2,19 +2,19 @@ export interface Itodo {
   id: string;
   taskName: string;
   status: StatusKey;
-  priority?: PriorityType;
+  priority: PriorityType;
   createdAt?: string;
   updatedAt?: string;
-  dueDate?: string;
+  dueDate: string;
   memo?: string;
 }
 
-export interface ClickObj {
+export interface FilterOption {
   deadline: boolean;
   priority: PriorityType | null;
 }
 
-export interface MenuObj {
+export interface MenuOption {
   PRIORITY: PriorityType[];
   FILTER: string[];
   KOR: string[];

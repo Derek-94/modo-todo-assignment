@@ -29,6 +29,7 @@ const Label: React.FC<StyledLabelProps> = ({ children, ...props }) => {
 };
 
 const LabelWrap = styled.button<StyledLabelProps>`
+  cursor: default;
   padding: ${({ theme }) => theme.layout.labelPadding};
   border-radius: ${({ theme }) => theme.layout.radius};
   ${props => setType(props)}

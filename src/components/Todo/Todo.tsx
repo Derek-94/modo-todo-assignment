@@ -1,14 +1,15 @@
 import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
-import TodoDetail from './TodoDetail';
+import TodoDetail from 'components/Todo/TodoDetail';
 import Label from 'components/common/Label';
 import Modal from 'components/common/Modal';
 import useModal from 'hooks/useModal';
 import { Itodo, PriorityType } from 'types';
 import { findById, isOverHalf, mergeArray } from 'utils/dnd';
-import { useDragDispatch, useDragState } from 'contexts';
+import { useDragDispatch, useDragState } from 'contexts/DragContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { dateFormatString } from 'utils/date';
 
 interface TodoProps {
   todo: Itodo;
@@ -49,6 +50,7 @@ const Todo: React.FC<TodoProps> = ({
     const newTodo: Itodo = {
       ...todos[from],
       status: newStatus,
+      updatedAt: dateFormatString(new Date()),
     };
     const newTodos = mergeArray(todos, from, to, newTodo);
     setTodoState(newTodos);
@@ -84,15 +86,13 @@ const Todo: React.FC<TodoProps> = ({
     onDeleteTodo(todo.id);
   };
 
+  const priorityKo = {
+    low: '낮음',
+    medium: '보통',
+    high: '높음',
+  };
   const priorityTransfer = (type?: PriorityType) => {
-    switch (type) {
-      case 'low':
-        return '낮음';
-      case 'medium':
-        return '보통';
-      case 'high':
-        return '높음';
-    }
+    return type ? priorityKo[type] : '';
   };
 
   return (
@@ -110,13 +110,13 @@ const Todo: React.FC<TodoProps> = ({
         onClick={toggleDetailModal}
       >
         <TodoContent>
-          <span>{todo.taskName}</span>
+          <TaskName>{todo.taskName}</TaskName>
           <TodoOption>
             <TodoDesc>
               <Label priority={todo.priority}>
                 {priorityTransfer(todo.priority)}
               </Label>
-              <span>{todo.dueDate}</span>
+              <span>{todo.dueDate.slice(5)}</span>
             </TodoDesc>
             <Icon icon={faTrashAlt} onClick={onClickIcon} />
           </TodoOption>
@@ -144,11 +144,11 @@ const marginByPosition = (props: StyledTodoProps) => {
   if (props.focus) {
     if (props.position > 0) {
       return css`
-        padding-bottom: 50px;
+        padding-bottom: 100px;
       `;
     } else {
       return css`
-        padding-top: 50px;
+        padding-top: 100px;
       `;
     }
   }
@@ -156,7 +156,10 @@ const marginByPosition = (props: StyledTodoProps) => {
     padding: 16px;
   `;
 };
-
+const TaskName = styled.p`
+  white-space: pre-line;
+  width: 90%;
+`;
 const TodoContainer = styled.div<StyledTodoProps>`
   padding: ${({ theme }) => theme.layout.listPadding};
   transition: 0.5s all ease;
@@ -174,6 +177,9 @@ const TodoContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const TodoOption = styled.div`
@@ -183,6 +189,8 @@ const TodoOption = styled.div`
 
 const TodoDesc = styled.div`
   display: flex;
+  min-width: 56px;
+  text-align: center;
   flex-direction: column;
   > span {
     padding-top: 5px;
