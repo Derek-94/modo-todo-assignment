@@ -32,19 +32,22 @@ const FilteringBody: React.FC<FilteringBodyProps> = ({
 
   return (
     <FilteringBodyBlock>
-      <Btn onClick={handlerOrigin} title="초기화">
+      <Btn onClick={handlerOrigin} title="필터링한 내용을 초기화합니다">
         <Icon
           icon={faClipboard}
           select={`${!filterOpt.deadline && !filterOpt.priority}`}
         />
       </Btn>
-      <Btn onClick={handlerDeadline} title="마감임박">
+      <Btn
+        onClick={handlerDeadline}
+        title="마감날짜가 임박한 Todo를 보여드립니다"
+      >
         <Icon
           icon={faExclamationCircle}
           select={filterOpt.deadline.toString()}
         />
       </Btn>
-      <Btn onClick={handlerDropdown} title="중요도">
+      <Btn onClick={handlerDropdown} title="중요도 순으로 정렬할 수 있습니다">
         <Icon icon={faListOl} select={filterOpt.priority ? true : false} />
         <PriorityLow checkPriority={filterOpt.priority || ''}></PriorityLow>
         <PriorityHigh checkPriority={filterOpt.priority || ''}></PriorityHigh>
