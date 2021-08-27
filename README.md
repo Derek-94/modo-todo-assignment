@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# 📑 Modu-todoList 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🔗 [배포주소](https://modumodu.netlify.app/)
 
-## Available Scripts
 
-In the project directory, you can run:
+|  https://modumodu.netlify.app/
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 시연 영상
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+(사진)
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## 😀 팀 구성원 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 👩‍💻 [강보현](https://github.com/bohyunkang)
+- 전체 **<span style="color: #44bd32">레이아웃</span>**,마크업 및 CSS 스타일링 설정.
+- _더미데이터_ 작성.
+- 리스트 목록 **<span style="color: #44bd32">라벨링 작업</span>**
+- 모달 컴포넌트 활용, **<span style="color: #44bd32">예외 처리 작업</span>**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 🎅 [강용구](https://github.com/psy-g)
+- **<span style="color: #f368e0">필터링 컴포넌트</span>** 생성
+- 날짜 관련 함수들 **<span style="color: #f368e0">모듈화</span>**
+- 필터링 **<span style="color: #f368e0">스타일링</span>**
 
-### `yarn eject`
+### 🍔 [이승열](https://github.com/ssong10)
+- 기본 **<span style="color: #9980FA">폴더 및 레이아웃</span>**, **<span style="color:#9980FA ">컴포넌트</span>** 설계
+- **<span style="color: #9980FA">드래그 앤 드롭 기능</span>** 구현
+- `Portal` 를 활용하여 **<span style="color:#9980FA ">모달</span>** 구현.
+- **<span style="color: #9980FA">`Local Storage` 연동</span>** 작업.
+- **<span style="color:#9980FA ">`Todo` 수정 기능</span>** 및 **<span style="color:#9980FA ">메모 기입 기능</span>** 추가
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 🙋‍♂️ [홍석기](https://github.com/Derek-94)
+- **<span style="color: #48dbfb">개발 환경 세팅</span>**
+- **<span style="color: #48dbfb">`Todo` 추가 ⊙ 삭제 기능</span>**
+- `react-datepicker` 를 활용한 **<span style="color: #48dbfb">달력 컴포넌트</span>** 추가
+- `README.md` 작성
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 공통
+- **리팩토링** 🛠
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📚 기술 스택
 
-## Learn More
+![image](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![image](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![image](	https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
