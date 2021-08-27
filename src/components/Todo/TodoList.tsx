@@ -43,7 +43,6 @@ const TodoList: React.FC = () => {
           filterOpt={filterOpt}
         />
       </TodoFormWrapper>
-      {/* <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} /> */}
       <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
