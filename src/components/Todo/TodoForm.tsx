@@ -9,13 +9,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 interface TodoWrapperProps {
   onAddTodo: (newTodo: Itodo) => void;
+  onValidationCheck: (validCheck: boolean) => void;
 }
 
-const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
+const TodoForm: React.FC<TodoWrapperProps> = ({
+  onAddTodo,
+  onValidationCheck,
+}) => {
   const [inputTodo, setInputTodo] = useState<string>('');
   const [priority, setPriority] = useState<PriorityType>('');
   const [dueDate, setDueDate] = useState<Date>(new Date());
-  const [validationError, setValidationError] = useState<boolean>(false);
 
   const onChangeInput: React.ChangeEventHandler<HTMLInputElement> = e => {
     setInputTodo(e.currentTarget.value);
@@ -28,9 +31,9 @@ const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
   const onRegisterTodo: React.MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();
     if (inputTodo.length === 0 || priority === '') {
-      setValidationError(() => true);
+      onValidationCheck(true);
     } else {
-      setValidationError(() => false);
+      onValidationCheck(false);
       setInputTodo('');
       onAddTodo({
         id: uuidv4(),
@@ -68,9 +71,6 @@ const TodoForm: React.FC<TodoWrapperProps> = ({ onAddTodo }) => {
           등록
         </Button>
       </Form>
-      {validationError && (
-        <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
-      )}
     </>
   );
 };

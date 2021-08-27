@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Column from './Column';
 import TodoForm from './TodoForm';
@@ -11,6 +11,7 @@ import { Itodo, StatusKey } from 'types';
 
 const TodoList: React.FC = () => {
   const {
+    todoState,
     filterTodo,
     setTodoState,
     handlerFiltering,
@@ -18,22 +19,27 @@ const TodoList: React.FC = () => {
     dropdownOpen,
     filterOpt,
   } = useFiltering();
+  const [validationError, setValidationError] = useState<boolean>(false);
 
   const filterList = (status: StatusKey) =>
     filterTodo.filter(todo => todo.status === status);
-
-  const onDeleteTodo = (id: string) => {
-    setTodoState(todoState => todoState.filter(todo => todo.id !== id));
-  };
 
   const onAddTodo = (newTodo: Itodo) => {
     setTodoState(prevState => [...prevState, newTodo]);
   };
 
+  const onDeleteTodo = (id: string) => {
+    setTodoState(todoState => todoState.filter(todo => todo.id !== id));
+  };
+
+  const onValidationCheck = (validCheck: boolean) => {
+    setValidationError(validCheck);
+  };
+
   return (
     <>
       <TodoFormWrapper>
-        <TodoForm onAddTodo={onAddTodo} />
+        <TodoForm onAddTodo={onAddTodo} onValidationCheck={onValidationCheck} />
         <FilteringContainer
           handlerFiltering={handlerFiltering}
           handlerDropdown={handlerDropdown}
@@ -41,7 +47,10 @@ const TodoList: React.FC = () => {
           filterOpt={filterOpt}
         />
       </TodoFormWrapper>
-      <SetTodo todoLength={filterTodo.length} setTodos={setTodoState} />
+      {validationError && (
+        <ErrorMessage>위 항목 중 선택하지 않은 것이 있습니다. 😥</ErrorMessage>
+      )}
+      <SetTodo todoLength={todoState.length} setTodos={setTodoState} />
       <MainContainer>
         <DragProvider>
           {STATUS.map((status, i) => (
@@ -59,6 +68,15 @@ const TodoList: React.FC = () => {
     </>
   );
 };
+
+const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.color.red};
+  display: flex;
+  justify-content: center;
+  margin: 6px;
+  font-weight: ${({ theme }) => theme.layout.fontBold};
+  font-size: 18px;
+`;
 
 const TodoFormWrapper = styled.div`
   padding-top: 80px;
