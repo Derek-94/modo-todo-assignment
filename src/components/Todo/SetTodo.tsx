@@ -6,19 +6,24 @@ import styled from 'styled-components';
 
 interface setTodoProps {
   todoLength: number;
+  setDefaultTodos: (todos: Itodo[]) => void;
   setTodos: (todos: Itodo[]) => void;
 }
-const SetTodo: React.FC<setTodoProps> = ({ todoLength, setTodos }) => {
+const SetTodo: React.FC<setTodoProps> = ({
+  todoLength,
+  setTodos,
+  setDefaultTodos,
+}) => {
   const initialTodo = TODOS as Itodo[];
   const clearTodos = () => {
     setTodos([]);
   };
   const showDummy = () => {
-    setTodos(initialTodo);
+    setDefaultTodos(initialTodo);
   };
-  const [showClear, setShowClear] = useState(todoLength > 3);
+  const [showClear, setShowClear] = useState(todoLength > 0);
   useEffect(() => {
-    setShowClear(todoLength > 3);
+    setShowClear(todoLength > 0);
   }, [todoLength]);
   return (
     <SetTodoWrap>
