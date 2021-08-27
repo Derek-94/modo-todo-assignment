@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import styled, { css } from 'styled-components';
 import Button from './Button';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
   Small?: boolean;
@@ -37,6 +37,7 @@ const Modal: React.FC<ModalProps> = ({ children, ...props }) => {
     }
     toggle();
   };
+
   return ModalPortal(
     <ModalWrap>
       <Container Small={alert || Small}>

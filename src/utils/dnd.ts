@@ -5,6 +5,7 @@ const THRESHOLD = 0.5;
 export const isOverHalf = (e: React.DragEvent<HTMLElement>): boolean => {
   const { offsetTop, scrollHeight } = e.currentTarget;
   const overPercent = (e.clientY - offsetTop) / scrollHeight;
+
   return overPercent > THRESHOLD;
 };
 
@@ -23,10 +24,12 @@ export const mergeArray = <T>(
       return true;
     }
   });
+
   const back = arr.filter((_, idx) => {
     if (idx !== from && idx > to) {
       return true;
     }
   });
+
   return front.concat(newState, back);
 };
