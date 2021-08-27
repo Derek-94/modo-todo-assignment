@@ -17,7 +17,7 @@ const HeaderContainer = styled.div`
   height: 70px;
   text-align: center;
   color: ${({ theme }) => theme.color.headerFont};
-  background-color: ${({ theme }) => theme.color.darkGreen};
+  background-color: ${({ theme }) => theme.color.darkBgColor};
   box-shadow: ${({ theme }) => theme.layout.dropShadow};
   font-size: ${({ theme }) => theme.layout.titleSize};
   font-weight: ${({ theme }) => theme.layout.fontBold};

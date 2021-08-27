@@ -1,8 +1,9 @@
 export const theme = {
   color: {
+    bgColor: '#3c6382',
+    darkBgColor: '#0a3d62',
     green: '#4BBF6B',
-    darkGreen: '#40A35B',
-    red: 'crimson',
+    red: '#DC143C',
     whiteBackground: '#F5F5F5',
     columnBackground: '#DFDFDF',
     borderline: '#B6AFAF',
@@ -20,6 +21,7 @@ export const theme = {
     formMargin: '10px',
     titleSize: '30px',
     subTitleSize: '20px',
+    fontSizeSmall: '14px',
     fontBold: '500',
   },
 };
