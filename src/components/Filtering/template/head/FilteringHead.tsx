@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FilteringHead: React.FC = () => {
-  return <FilteringHeadBlock></FilteringHeadBlock>;
+  return <FilteringHeadBlock />;
 };
 
 export default FilteringHead;

@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import { Itodo } from 'types';
+import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
+import Label from 'components/common/Label';
 import useForm from 'hooks/useForm';
+import { Itodo, PriorityType } from 'types';
 
 interface DetailProps {
   setTodoState: React.Dispatch<React.SetStateAction<Itodo[]>>;
   todo: Itodo;
+  priorityTransfer: (type?: PriorityType) => ReactNode;
 }
 
 type InputElement = HTMLInputElement | HTMLTextAreaElement;
 
-const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
+const TodoDetail: React.FC<DetailProps> = ({
+  todo,
+  setTodoState,
+  priorityTransfer,
+}) => {
   const { formData, onFormChange } = useForm<Itodo>(todo);
   const [memoUpdate, setMemoUpdate] = useState(false);
   const [titleUpdate, setTitleUpdate] = useState(false);
+
   const handlerChange = (e: React.ChangeEvent<InputElement>) => {
     onFormChange(e);
   };
+
   const saveDate = () => {
     setTodoState(prev =>
       prev.map(state => {
@@ -32,6 +40,7 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
     setMemoUpdate(false);
     setTitleUpdate(false);
   };
+
   const handlerTitleKeyEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.stopPropagation();
     if (e.code === 'Escape') {
@@ -41,6 +50,7 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
       saveDate();
     }
   };
+
   const handlerMemoKeyEvent = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     e.stopPropagation();
     if (e.code === 'Escape') {
@@ -50,8 +60,9 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
       saveDate();
     }
   };
+
   return (
-    <div>
+    <>
       {titleUpdate ? (
         <TitleEditor
           autoFocus
@@ -67,8 +78,8 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
         </Title>
       )}
       <TodoDate>
-        <p>createdAt:{todo.createdAt}</p>
-        <p>updatedAt:{todo.updatedAt}</p>
+        <p>생성일 : {todo.createdAt}</p>
+        <p>수정일 : {todo.updatedAt}</p>
       </TodoDate>
       <TodoMemoContainer>
         {memoUpdate ? (
@@ -93,14 +104,22 @@ const TodoDetail: React.FC<DetailProps> = ({ todo, setTodoState }) => {
         )}
       </TodoMemoContainer>
 
-      <p>중요도 : {todo.priority}</p>
+      <p>
+        중요도 :{' '}
+        {
+          <Label priority={todo.priority}>
+            {priorityTransfer(todo.priority)}
+          </Label>
+        }
+      </p>
       <p>완료 예정일 : {todo.dueDate}</p>
-    </div>
+    </>
   );
 };
+
 const TitleEditor = styled.input`
   text-align: left;
-  border: 1px solid #cccccc;
+  border: 1px solid ${({ theme }) => theme.color.borderline};
   width: 100%;
   font-size: 14px;
   margin: 10px;
@@ -132,5 +151,6 @@ const TodoDate = styled.div`
 const TodoMemoContainer = styled.div`
   height: 150px;
   line-height: 1.5;
+  margin: 10px 0;
 `;
 export default TodoDetail;

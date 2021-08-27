@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ClickObj, PriorityType, FilterReducer } from 'types';
 import FilteringHead from 'components/Filtering/template/head/FilteringHead';
 import FilteringBody from 'components/Filtering/template/body/FilteringBody';
+import { ClickObj, PriorityType, FilterReducer } from 'types';
 
 interface FilteringContainerProps {
   handlerFiltering: (type: FilterReducer, action?: PriorityType) => void;

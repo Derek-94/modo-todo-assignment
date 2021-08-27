@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 import Button from '../common/Button';
-
 import { dateFormatString } from '../../utils/date';
 import { Itodo, PriorityType } from 'types';
 import uuidv4 from 'utils/getUuid';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface TodoWrapperProps {
   onAddTodo: (newTodo: Itodo) => void;
@@ -53,12 +52,12 @@ const TodoForm: React.FC<TodoWrapperProps> = ({
           required
           value={inputTodo}
           onChange={onChangeInput}
-          placeholder="Input your todos..."
+          placeholder="할 일을 적어주세요!"
         />
         <TodoDatePick
           selected={dueDate}
           onChange={date => setDueDate(date as Date)}
-          placeholderText="Set due date..."
+          placeholderText="완료 목표일을 적어주세요!"
         />
         <Select defaultValue="default" required onChange={onChangePriority}>
           <option value="default" disabled>

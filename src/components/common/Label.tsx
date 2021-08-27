@@ -1,27 +1,26 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { PriorityType } from 'types';
 
 interface StyledLabelProps {
-  High?: boolean;
-  Medium?: boolean;
-  Low?: boolean;
+  priority?: PriorityType;
 }
 
-const setSize = (props: StyledLabelProps) => {
-  if (props.High) {
+const setType = (props: StyledLabelProps) => {
+  if (props.priority === 'high') {
     return css`
-      background-color: #ea2027;
+      background-color: #ff6b6b;
     `;
   }
 
-  if (props.Medium) {
+  if (props.priority === 'medium') {
     return css`
-      background-color: #ffc312;
+      background-color: #feca57;
     `;
   }
 
   return css`
-    background-color: #009432;
+    background-color: #1dd1a1;
   `;
 };
 
@@ -32,7 +31,7 @@ const Label: React.FC<StyledLabelProps> = ({ children, ...props }) => {
 const LabelWrap = styled.button<StyledLabelProps>`
   padding: ${({ theme }) => theme.layout.labelPadding};
   border-radius: ${({ theme }) => theme.layout.radius};
-  ${props => setSize(props)}
+  ${props => setType(props)}
 `;
 
 export default Label;

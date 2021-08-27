@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { STATUS } from 'constant';
-import { Itodo, StatusKey } from 'types';
+import styled from 'styled-components';
 import Column from './Column';
 import TodoForm from './TodoForm';
-import styled from 'styled-components';
-import DragProvider from 'contexts/DragContext';
-
-import { useFiltering } from 'components/Filtering/FilteringService';
 import FilteringContainer from 'components/Filtering/FilteringContainer';
 import SetTodo from 'components/Todo/SetTodo';
+import DragProvider from 'contexts/DragContext';
+import { useFiltering } from 'components/Filtering/FilteringService';
+import { STATUS } from 'constant';
+import { Itodo, StatusKey } from 'types';
 
 const TodoList: React.FC = () => {
   const {

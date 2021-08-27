@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle<{ theme: any }>`
   }
 
   body {
-    background-color: ${({ theme }) => theme.color.green};
+    background-color: ${({ theme }) => theme.color.bgColor};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
@@ -27,6 +27,15 @@ const GlobalStyles = createGlobalStyle<{ theme: any }>`
   button {
     cursor: pointer;
   }
+
+  select {
+    outline:none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  select::-ms-expand { display:none; } 
 `;
 
 export default GlobalStyles;

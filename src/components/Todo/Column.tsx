@@ -1,7 +1,7 @@
 import React from 'react';
-import { Itodo, StatusKey } from 'types';
-import Todo from './Todo';
 import styled from 'styled-components';
+import Todo from './Todo';
+import { Itodo, StatusKey, PriorityType } from 'types';
 import { findById, mergeArray } from 'utils/dnd';
 import { useDragDispatch } from 'contexts';
 
@@ -25,6 +25,7 @@ const Column: React.FC<ColumnProps> = ({
     e.preventDefault();
     dispatch({ type: 'SET_HOVER', hover: null });
   };
+
   const moveLast = (e: React.DragEvent<HTMLDivElement>) => {
     const targetId = e.dataTransfer.getData('id');
     const from = findById(todos, targetId);
@@ -32,10 +33,12 @@ const Column: React.FC<ColumnProps> = ({
       ...todos[from],
       status: status,
     };
+
     const newTodos = mergeArray(todos, from, todos.length, newTodo);
     setTodoState(newTodos);
     dispatch({ type: 'SET_HOVER', hover: null });
   };
+
   return (
     <ColumnContatiner>
       <h2>{status}</h2>

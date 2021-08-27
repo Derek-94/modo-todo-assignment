@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Button from 'components/common/Button';
-import { Itodo } from 'types';
-import TODOS from 'constant/dummy.json';
 import styled from 'styled-components';
+import Button from 'components/common/Button';
+import TODOS from 'constant/dummy.json';
+import { Itodo } from 'types';
 
 interface setTodoProps {
   todoLength: number;
   setTodos: (todos: Itodo[]) => void;
 }
+
 const SetTodo: React.FC<setTodoProps> = ({ todoLength, setTodos }) => {
   const [showClear, setShowClear] = useState(todoLength > 0);
 
@@ -35,6 +36,6 @@ const SetTodo: React.FC<setTodoProps> = ({ todoLength, setTodos }) => {
 };
 const SetTodoWrap = styled.div`
   text-align: right;
-  margin-right: 24px;
+  margin-right: ${({ theme }) => theme.layout.gap};
 `;
 export default SetTodo;
