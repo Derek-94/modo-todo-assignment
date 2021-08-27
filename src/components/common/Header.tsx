@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { currentDate } from 'utils/date';
 
 const Header: React.FC = () => {
-  const currentDate = new Date();
   const date = new Intl.DateTimeFormat('KO-KR', {
     dateStyle: 'long',
-  }).format(currentDate);
+  }).format(currentDate());
 
   return <HeaderContainer>{date}'s Todo List</HeaderContainer>;
 };
